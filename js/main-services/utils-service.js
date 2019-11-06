@@ -4,7 +4,8 @@
 export default {
     saveToStorage,
     loadFromStorage,
-    makeId
+    makeId,
+    loadFromStorage2
 }
 
 function saveToStorage(key, value) {

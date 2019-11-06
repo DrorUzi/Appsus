@@ -30,6 +30,7 @@ const myRoutes = [
         children: [
             {
                 path: 'edit/:id?',
+                name:'edit',
                 component: noteEdit
             },
         ]
