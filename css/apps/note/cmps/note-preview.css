@@ -1,4 +1,7 @@
 .note-preview{
     border: 1px solid black;
-    width: 30%;
+    padding: 10px;
+    border-radius: 20px;
+    height: 100%;
+    width: 100%;
 }

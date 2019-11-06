@@ -1,0 +1,18 @@
+body{
+    height: 100vh;
+}
+.add-note {
+    border: 1px solid #F08080;
+    background-color: #FFDCDC;
+    border-radius: 10px;
+    font-size: 2rem;
+    padding: 7px;
+}
+
+.add-note:hover {
+    background-color: rgb(231, 202, 202);
+}
+
+.add-note:active {
+    color: white;
+}

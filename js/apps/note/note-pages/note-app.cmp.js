@@ -5,7 +5,7 @@ import noteList from '../note-cmps/note-list.cmp.js';
 export default {
   template: `
     <section class="keep-app">
-      <router-link to="/note/edit">add a note</router-link>
+      <router-link class="add-note" to="/note/edit">add a note</router-link>
       <note-list :notes="notes"></note-list>
     </section>
     `,

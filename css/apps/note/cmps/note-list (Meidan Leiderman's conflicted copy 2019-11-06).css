@@ -2,9 +2,9 @@
     width: 70%;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(12,calc(100%/12));
     grid-auto-rows: 50px;
-    grid-gap: 10px;
+    grid-gap: 5px;
     /* grid-auto-flow: dense; */
 }
 
@@ -12,23 +12,13 @@
     text-decoration: none;
     color: black;
 }
-
 .list-item {
-    grid-column: span 3;
-    grid-row: span 3;
-}
-
-.txt {
     grid-column: span 3;
     grid-row: span 2;
 }
 
-.img {
+.txt{
     grid-column: span 3;
-    grid-row: span 4;
+    grid-row: span 2;
 }
 
-.todo {
-    grid-column: span 3;
-    grid-row: span 3;
-}
