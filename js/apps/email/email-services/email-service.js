@@ -43,7 +43,7 @@ var starterEmails = [
     {
         name:'Moshe',
         id: utilsService.makeId(),
-        subject: 'Hello',
+        subject: 'Hello how are you?',
         body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
         sentTo: 'noa@gmail.com',
         sentFrom: 'moshe@gmail.com',

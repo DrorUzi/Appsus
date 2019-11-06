@@ -6,12 +6,13 @@
     /* align-items: center; */
     flex-direction: column;
     justify-content: space-between;
+    height: 40%;
 }
 
 .compose-btn{
     background-color:#ffdcdc;
     border-radius: 20px;
-    width: 60%;
+    width: 70%;
     height: 2.5rem;
     padding: 8px;
     text-align: center;
@@ -40,12 +41,12 @@
     height: 2rem;
     margin: 10px;
 }
-.inbox{
+.opt{
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-.inbox:hover{
+.opt:hover{
     background-color: rgba(255, 0, 0, 0.315);
     border-radius: 0 30px 30px 0;
 }
