@@ -1,11 +1,21 @@
+'use strict';
+
+import router from './routes.js'
+
 new Vue({
+    router,
     el: '#appsus',
     template: `
         <div>
-            <h1>aa</h1>
+            <router-view></router-view>
         </div>
     `,
 
 })
 
 
+
+// /
+// <user-msg></user-msg>
+// <main-footer></main-footer>
+// /
