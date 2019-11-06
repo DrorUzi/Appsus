@@ -6,6 +6,7 @@ import email from './apps/email/email-pages/email-app.cmp.js';
 import note from './apps/note/note-pages/note-app.cmp.js';
 import noteEdit from './apps/note/note-pages/note-edit.cmp.js';
 import details from './apps/email/email-pages/email-details.cmp.js';
+import bigPreview from './apps/email/email-cmps/email-big-preview.cmp.js';
 
 
 const myRoutes = [
@@ -16,10 +17,12 @@ const myRoutes = [
     {
         path: '/email',
         component: email,
-    },
-    {
-        path: '/email/details/:id',
-        component: details
+        children: [
+            {
+                path: 'preview/+id',
+                component: bigPreview
+            },
+        ]
     },
     {
         path: '/note',

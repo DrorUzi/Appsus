@@ -18,6 +18,7 @@ function loadFromStorage(key) {
     return value;
 }
 
+
 function makeId() {
     var text = "";
     var char_list = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
