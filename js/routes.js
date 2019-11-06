@@ -3,7 +3,7 @@
 // import aboutPage from './pages/about.cmp.js';
 import homepage from './main-cmps/home-page.cmp.js';
 import email from './apps/email/email-pages/email-app.cmp.js';
-import keep from './apps/keep/keep-pages/keep-app.cmp.js';
+import note from './apps/keep/note-pages/note-app.cmp.js';
 
 
 const myRoutes = [
@@ -16,8 +16,8 @@ const myRoutes = [
         component: email
     },
     {
-        path: '/keep',
-        component: keep
+        path: '/note',
+        component: note
     },
     // {
     //     path: '/about',
