@@ -1,1 +1,3 @@
 @import "./apps/note/note-main.css";
+@import "./apps/email/cmps/email-preview.css";
+@import "./base.css"
