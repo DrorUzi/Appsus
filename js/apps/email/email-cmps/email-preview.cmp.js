@@ -7,15 +7,15 @@ export default {
     props:['email'],
     template: `
         <section @click="isClick" class="email-preview-container"> 
-            <div class="preview-info">
-            <div class="name-preview">
-                <h3>{{email.name}}</h3>
-                <h3>{{email.subject}}</h3>
-            </div>
-            <div class="date-preview">
-                <h4>{{email.sentAt}}</h4>
-                <img class="read-envelope-img" :src="checkIfRead">
-            </div>
+            <div class="preview-info" :class="{clicked : isClicked}">
+                <div class="name-preview">
+                    <h3>{{email.name}}</h3>
+                    <h4>{{email.subject}}</h4>
+                </div>
+                <div class="date-preview">
+                    <h4>{{email.sentAt}}</h4>
+                    <img class="read-envelope-img" :src="checkIfRead">
+                </div>
             </div>
            <email-big-preview :email="email" :class="{hidden : !isClicked}"></email-big-preview>
         </section>
