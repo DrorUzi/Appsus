@@ -6,7 +6,7 @@ export default {
   template: `
     <section class="keep-app">
       <h1>KEEP APP</h1>
-      <button>Add a note</button>
+      <router-link to="/note/edit">add a note</router-link>
       <note-list :notes="notes"></note-list>
     </section>
     `,
@@ -25,7 +25,8 @@ export default {
 
   },
   created() {
-    this.notes = noteService.getNotes()
+    noteService.getNotes()
+    .then(notes => this.notes=notes )
   },
   components: {
     noteList,

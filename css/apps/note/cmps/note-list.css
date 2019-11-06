@@ -1,0 +1,7 @@
+.note-list{
+    list-style: none;
+}
+.note-list a{
+    text-decoration: none;
+    color: black;
+}

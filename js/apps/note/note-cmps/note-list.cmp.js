@@ -1,19 +1,22 @@
 import { noteService } from '../note-services/note-service.js';
 import notePreview from './note-preview.cmp.js';
-// :key="currNote.id"
+    import noteEdit from '../note-pages/note-edit.cmp.js';
 export default {
     props: ['notes'],
     template: `
     <section class="">
         <h1>lalalla</h1>
+        <router-view></router-view>
         <ul class="note-list">
-            <note-preview v-for="currNote in notes" :note="currNote"></note-preview>
+            <router-link :key="currNote.id" :to="'/note/edit/'+currNote.id" v-for="currNote in notes"><note-preview :note="currNote"></note-preview></router-link>
         </ul>
     </section>
     `,
     data() {
         return {
             // notes:[],
+            currNoteId: null,
+            isEditing: false,
         }
     },
     methods: {
@@ -22,9 +25,10 @@ export default {
     computed: {
     },
     created() {
-
+ 
     },
     components: {
-        notePreview
+        notePreview,
+        noteEdit,
     }
 }
