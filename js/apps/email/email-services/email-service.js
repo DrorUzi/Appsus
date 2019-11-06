@@ -4,11 +4,21 @@ import utilsService from '../../../main-services/utils-service.js';
 
 export default {
     getEmails,
-    findEmailById
+    findEmailById,
+    deleteEmail
 }
 
 var gEmails;
 const EMAILS_KEY = 'emails'
+
+function deleteEmail(id){
+    var idx = gEmails.findIndex(email => {
+        return email.id === id
+    })
+    gEmails.splice(idx ,1)
+    utilsService.saveToStorage(EMAILS_KEY,gEmails)
+    return Promise.resolve()
+}
 
 function getEmails() {
     var emails = utilsService.loadFromStorage(EMAILS_KEY)

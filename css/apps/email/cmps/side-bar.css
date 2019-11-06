@@ -1,0 +1,51 @@
+
+.side-bar{
+    display: flex;
+    width: 35%;
+    padding: 20px;
+    /* align-items: center; */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.compose-btn{
+    background-color:#ffdcdc;
+    border-radius: 20px;
+    width: 60%;
+    height: 2.5rem;
+    padding: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    box-shadow: 1px 5px 6px -5px black;
+    cursor: pointer;
+
+}
+.compose-btn:hover{
+    background-color: #f08080;
+}
+.compose-btn img{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.compose-btn span{
+    padding-top: 4px;
+}
+.side-bar-options{
+    display: flex;
+    flex-direction: column;
+}
+.side-bar-options img{
+    width: 2rem;
+    height: 2rem;
+    margin: 10px;
+}
+.inbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.inbox:hover{
+    background-color: rgba(255, 0, 0, 0.315);
+    border-radius: 0 30px 30px 0;
+}

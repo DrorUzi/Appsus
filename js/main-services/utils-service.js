@@ -19,10 +19,6 @@ function loadFromStorage(key) {
     return value;
 }
 
-function loadFromStorage2(key) {
-    var str = localStorage.getItem(key);
-    if(str) return JSON.parse(str)
-}
 
 function makeId() {
     var text = "";

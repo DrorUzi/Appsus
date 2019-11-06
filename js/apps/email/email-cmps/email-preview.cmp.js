@@ -1,5 +1,8 @@
 'use strict';
 
+import emailBigPreview from './email-big-preview.cmp.js'
+
+
 export default {
     props:['email'],
     template: `
@@ -14,17 +17,7 @@ export default {
                 <img class="read-envelope-img" :src="checkIfRead">
             </div>
             </div>
-            <div :class="{hidden : !isClicked}" class="small-info-container">
-                <h2>{{email.subject}}</h2>
-                <div class="email-name-line">
-                    <div class="email-name">
-                        <h4>{{email.name}}</h4>
-                        <span><{{email.sentFrom}}></span>
-                    </div>
-                    <img src="../../../../img/email/fulldetails.png">
-                </div>
-                <p>{{email.body}}</p>
-            </div>
+           <email-big-preview :email="email" :class="{hidden : !isClicked}"></email-big-preview>
         </section>
     `,
     data(){
@@ -39,11 +32,13 @@ export default {
         },
     },
     computed:{
-        
         checkIfRead(){
             if(this.email.isRead)return '../../../../img/email/read.png'
             else return '../../../../img/email/unread.png'
         }
+    },
+    components:{
+        emailBigPreview
     }
    
 }
