@@ -7,6 +7,11 @@ export const noteService = {
     saveNote,
 }
 
+const NOTES_KEY = 'notes'
+var gNotes;
+
+
+
 function findNoteById(noteId) {
     var selectedNote = gNotes.find(note => note.id === noteId)
     return Promise.resolve(selectedNote)
@@ -14,21 +19,23 @@ function findNoteById(noteId) {
 
 function saveNote(note, noteId) {
     if (!noteId) {
-        let newNote = note
+        var newNote = note
         newNote.id = utilsService.makeId()
-        gNotes.unshift()
+        gNotes.unshift(newNote)
     }
     else {
-        findNoteById(noteId)
+        var newNote = findNoteById(noteId)
             .then(noteToEdit => {
                 noteToEdit = note
                 noteToEdit.id = noteId
-                console.log(gNotes);
             })
     }
+    utilsService.saveToStorage(NOTES_KEY,gNotes)
+    return Promise.resolve(newNote)
 }
 
-var gNotes = [
+
+var defaultNotes = [
     {
         id: utilsService.makeId(),
         title: 'img',
@@ -54,16 +61,18 @@ var gNotes = [
         editedAt: 'today'
     },
 ]
+_loadGNotes()
+
+function _loadGNotes() {
+    if(!utilsService.loadFromStorage(NOTES_KEY)){
+        gNotes = defaultNotes
+        utilsService.saveToStorage(NOTES_KEY,gNotes)
+    }
+    else {
+        gNotes = utilsService.loadFromStorage(NOTES_KEY)
+    }
+}
 
 function getNotes() {
     return Promise.resolve(gNotes)
 }
-
-// var emptyNote = {
-//     title,
-//     isPinned: false,
-//     type: 'img OR txt OR todo',
-//     editedAt: 'date'
-
-// }
-

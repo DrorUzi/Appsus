@@ -4,7 +4,8 @@
 export default {
     saveToStorage,
     loadFromStorage,
-    makeId
+    makeId,
+    loadFromStorage2
 }
 
 function saveToStorage(key, value) {
@@ -16,6 +17,11 @@ function loadFromStorage(key) {
     var str = localStorage.getItem(key);
     var value = JSON.parse(str)
     return value;
+}
+
+function loadFromStorage2(key) {
+    var str = localStorage.getItem(key);
+    if(str) return JSON.parse(str)
 }
 
 function makeId() {

@@ -1,11 +1,13 @@
 'use strict';
 
 import { noteService } from "../note-services/note-service.js";
+import { eventBus } from "../../../main-services/eventbus-service.js"
 
 export default {
+    //v-if="notes not good enough"
     template: `
-    <section class="note-edit">
-        <h2>note Id: {{noteId}}</h2>
+    <section class="note-edit" v-if="note">
+        <h2>note Id: {{note.id}}</h2>
         <form @submit.prevent>
             <input type="text" placeholder="Title" v-model="note.title">
             <textarea cols="30" rows="5" v-model="note.txt" placeholder="Write text here"></textarea>
@@ -26,34 +28,52 @@ export default {
     data() {
         return {
             noteId: '',
-            note: {
-                title: '',
-                txt: '',
-                isPinned: false,
-                type: 'txt',
-                editedAt: ''
-            }
+            note: null
         }
     },
     methods: {
         loadNote() {
-            this.noteId = this.$route.params.id;
-            if (this.noteId) {
-                this.note = noteService.findNoteById(this.noteId)
-                    .then(console.log(this.note)
-                    )
+            // this.noteId = this.$route.params.id;                  
+            var idParam = this.$route.params.id
+            console.log(idParam);
+            if (idParam) {
+                noteService.findNoteById(idParam)
+                    .then(note => {
+                        console.log(note);
+                        this.noteId = idParam
+                        this.note = note
+                    })
             }
-//need to finish this note loading stuff
+            else {
+                this.noteId = ''
+                this.note = {
+                    title: '',
+                    txt: '',
+                    isPinned: false,
+                    type: 'txt',
+                    editedAt: ''
+                }
+            }
 
         },
         onSaveNote() {
             this.note.editedAt = new Date().toLocaleString()
             noteService.saveNote(this.note, this.noteId)
+                .then(() => {
+                    //add success msg
+                    this.noteId = ''
+                    this.note = {
+                        title: '',
+                        txt: '',
+                        isPinned: false,
+                        type: 'txt',
+                        editedAt: ''
+                    }
+                })
         }
 
     },
     computed: {
-
 
     },
     created() {

@@ -8,13 +8,13 @@ export default {
         <h1>lalalla</h1>
         <router-view></router-view>
         <ul class="note-list">
-            <router-link :key="currNote.id" :to="'/note/edit/'+currNote.id" v-for="currNote in notes"><note-preview :note="currNote"></note-preview></router-link>
+            <router-link :key="currNote.id" :to="'/note/edit/'+currNote.id" v-for="currNote in notes">
+            <note-preview :note="currNote"></note-preview></router-link>
         </ul>
     </section>
     `,
     data() {
         return {
-            // notes:[],
             currNoteId: null,
             isEditing: false,
         }
