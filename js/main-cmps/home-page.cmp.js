@@ -2,8 +2,6 @@
 
 
 
-
-
 export default {
     template: `
     <section class="home-page">
@@ -13,7 +11,7 @@ export default {
             <router-link to="/book">MISS BOOKS</router-link>
             <router-link class="add-link" to="/email">MISTER EMAIL</router-link>
             <router-link class="add-link" to="/keep">MISS KEEP</router-link>
-            <router-link to="/about" exact>ABOUT</router-link> 
+            <router-link to="/about" exact>ABOUT</router-link>
         </div>
     </section>
     `,
