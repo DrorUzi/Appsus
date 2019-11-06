@@ -5,7 +5,6 @@ export default {
     props: ['notes'],
     template: `
     <section class="">
-        <h1>lalalla</h1>
         <router-view></router-view>
         <ul class="note-list">
             <router-link :key="currNote.id" :to="'/note/edit/'+currNote.id" v-for="currNote in notes">
