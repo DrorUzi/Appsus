@@ -6,13 +6,12 @@ export default {
     props:['emails'],
     template: `
     <section class="email-list"> 
-            <email-preview v-for="email in emails" :key="email.id" :email="email">
-            </email-preview>
+                <email-preview :key="email.id" v-for="email in emails" :email="email">
+                </email-preview>
     </section>
     `,
     components:{
         emailPreview
     }
 }
-
 

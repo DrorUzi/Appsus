@@ -3,7 +3,8 @@
 import utilsService from '../../../main-services/utils-service.js';
 
 export default {
-    getEmails
+    getEmails,
+    findEmailById
 }
 
 var gEmails;
@@ -19,52 +20,63 @@ function getEmails() {
     return Promise.resolve(gEmails)
 }
 
+function findEmailById(id) {
+    var email = gEmails.find(email => {
+        return email.id === id
+    });
+    utilsService.saveToStorage(EMAILS_KEY, gEmails)
+    return Promise.resolve(email)
+}
 
 
 var starterEmails = [
     {
+        name:'Moshe',
         id: utilsService.makeId(),
         subject: 'Hello',
         body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
-        sentTo: 'AAA@gmail.com',
-        sendFrom: 'Ori@gmail.com',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
         isRead: true,
         isMarked: true,
-        sentAt : Date.now()
+        sentAt:new Date().toLocaleString()
 
 
     },
     {
+        name:'Ori',
         id: utilsService.makeId(),
         subject: 'App',
         body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
         sentTo: 'Dror@gmail.com',
-        sendFrom: 'Ori@gmail.com',
+        sentFrom: 'Ori@gmail.com',
         isRead: false,
         isMarked: true,
-        sentAt : Date.now()
+        sentAt:new Date().toLocaleString()
 
     },
     {
+        name:'Dror',
         id: utilsService.makeId(),
         subject: 'Meeting',
         body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
-        sentTo: 'Dror@gmail.com',
-        sendFrom: 'Ori@gmail.com',
+        sentTo: 'ori@gmail.com',
+        sentFrom: 'dror@gmail.com',
         isRead: true,
         isMarked: false,
-        sentAt : Date.now()
+        sentAt:new Date().toLocaleString()
 
     },
     {
+        name:'Dror',
         id: utilsService.makeId(),
         subject: 'Mail',
         body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
-        sentTo: 'Dror@gmail.com',
-        sendFrom: 'Ori@gmail.com',
+        sentTo: 'Ori@gmail.com',
+        sentFrom: 'Dror@gmail.com',
         isRead: true,
         isMarked: true,
-        sentAt : Date.now()
+        sentAt:new Date().toLocaleString()
 
     },
 

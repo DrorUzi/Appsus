@@ -4,6 +4,7 @@
 import homepage from './main-cmps/home-page.cmp.js';
 import email from './apps/email/email-pages/email-app.cmp.js';
 import note from './apps/note/note-pages/note-app.cmp.js';
+import details from './apps/email/email-pages/email-details.cmp.js';
 
 
 const myRoutes = [
@@ -13,7 +14,11 @@ const myRoutes = [
     },
     {
         path: '/email',
-        component: email
+        component: email,
+    },
+    {
+        path: '/email/details/:id',
+        component: details
     },
     {
         path: '/note',
