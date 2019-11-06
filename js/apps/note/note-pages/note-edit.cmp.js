@@ -4,7 +4,6 @@ import { noteService } from "../note-services/note-service.js";
 import { eventBus } from "../../../main-services/eventbus-service.js"
 
 export default {
-    //v-if="notes not good enough"
     template: `
     <section class="note-edit" v-if="note">
         <h2>note Id: {{note.id}}</h2>
@@ -33,13 +32,10 @@ export default {
     },
     methods: {
         loadNote() {
-            // this.noteId = this.$route.params.id;                  
             var idParam = this.$route.params.id
-            console.log(idParam);
             if (idParam) {
                 noteService.findNoteById(idParam)
                     .then(note => {
-                        console.log(note);
                         this.noteId = idParam
                         this.note = note
                     })
