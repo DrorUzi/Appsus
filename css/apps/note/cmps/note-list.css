@@ -16,6 +16,7 @@
 .list-item {
     grid-column: span 3;
     grid-row: span 3;
+    overflow: hidden;
 }
 
 .txt {

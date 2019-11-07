@@ -5,6 +5,7 @@ export const noteService = {
     getNotes,
     findNoteById,
     saveNote,
+    deleteNote,
 }
 
 const NOTES_KEY = 'notes'
@@ -30,10 +31,25 @@ function saveNote(note, noteId) {
                 noteToEdit.id = noteId
             })
     }
-    utilsService.saveToStorage(NOTES_KEY,gNotes)
+    utilsService.saveToStorage(NOTES_KEY, gNotes)
     return Promise.resolve(newNote)
 }
 
+function deleteNote(noteId) {
+    var selectedNoteIdx = gNotes.findIndex(note => note.id === noteId)
+    gNotes.splice(selectedNoteIdx, 1)
+    utilsService.saveToStorage(NOTES_KEY, gNotes)
+    return Promise.resolve('note deleted successfully')
+}
+
+
+var previewCmps = [
+    {
+        type: 'txt',
+        
+
+    },
+]
 
 var defaultNotes = [
     {
@@ -64,9 +80,9 @@ var defaultNotes = [
 _loadGNotes()
 
 function _loadGNotes() {
-    if(!utilsService.loadFromStorage(NOTES_KEY)){
+    if (!utilsService.loadFromStorage(NOTES_KEY)) {
         gNotes = defaultNotes
-        utilsService.saveToStorage(NOTES_KEY,gNotes)
+        utilsService.saveToStorage(NOTES_KEY, gNotes)
     }
     else {
         gNotes = utilsService.loadFromStorage(NOTES_KEY)
