@@ -31,3 +31,7 @@
 .add-btns{
     display: flex;
 }
+
+.done-todo{
+    text-decoration: line-through;
+}

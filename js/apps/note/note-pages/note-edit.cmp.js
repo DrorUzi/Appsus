@@ -9,7 +9,9 @@ export default {
         <form @submit.prevent class="note-edit form-review">
             <div class="edit-inputs">
                 <input type="text" placeholder="Title" v-model="note.title" ref="titleInput">
-                <textarea class="input-text" cols="30" :rows="textAreaSize(note.type)" v-model="note.txt" :placeholder="placeholderTxt(note.type)"></textarea>
+                <textarea v-if="note.type!=='img'" class="input-text" cols="30" :rows="textAreaSize(note.type)" v-model="note.data" :placeholder="placeholderTxt(note.type)"></textarea>
+                <input v-if="note.type==='img'" type="url" placeholder="Enter image URL">
+                <button @click="addTodo" type="button" v-if="note.type==='todo'">Add Todo</button>
                 <p v-if="note.editedAt" class="edited-at">Last edit at:{{note.editedAt}}</p>
             </div>
             <div>
@@ -32,7 +34,7 @@ export default {
             </div> 
             <div class="add-btns">
             <button @click="onSaveNote" class="add-btn">Save</button>
-            <button @click="onDeleteNote" class="add-btn">Delete</button>
+            <button type="button" @click="onDeleteNote" class="add-btn">Delete</button>
             </div>
         </form>
     </section>
@@ -40,10 +42,17 @@ export default {
     data() {
         return {
             noteId: '',
-            note: null
+            note: null,
+            todos: []
+
         }
     },
     methods: {
+        addTodo() {
+            if (!this.note.todos) this.note.todos = []
+            this.note.todos.push(this.note.data)
+            this.note.data = ''
+        },
         loadNote() {
             var idParam = this.$route.params.id
             if (idParam) {
@@ -57,10 +66,9 @@ export default {
                 this.noteId = ''
                 this.note = {
                     title: '',
-                    txt: '',
+                    data: '',
                     isPinned: false,
                     type: 'txt',
-                    data:'',
                     editedAt: ''
                 }
             }
@@ -73,7 +81,7 @@ export default {
                     //add success msg
                     this.note = {
                         title: '',
-                        txt: '',
+                        data: '',
                         isPinned: false,
                         type: 'txt',
                         editedAt: ''
@@ -110,8 +118,8 @@ export default {
         placeholderTxt(noteType) {
             let placeholder;
             if (noteType === 'txt') placeholder = 'text'
-            else if (noteType === 'todo') placeholder = 'todo'
-            else placeholder = 'image URL'
+            else placeholder = 'todo'
+
             return `Enter ${placeholder} here`
         },
     },

@@ -8,11 +8,6 @@
     /* grid-auto-flow: dense; */
 }
 
-.note-list a {
-    text-decoration: none;
-    color: black;
-}
-
 .list-item {
     grid-column: span 3;
     grid-row: span 3;
