@@ -11,7 +11,7 @@ export default {
             </div>
         </router-link>
         <div class="side-bar-options">
-            <router-link class="opt" to="/email" >
+            <router-link class="opt" to="/email/list">
                 <img src="../../../img/email/inbox.png">
                 <h4>Inbox</h4>
             </router-link>              
