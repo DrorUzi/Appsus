@@ -5,7 +5,7 @@ export default {
     template: `
     <div class="note-preview">
         <h2>Title: {{note.title}}</h2>
-        <img src="img/logo.png" alt="Appsus Logo" title="Appsus">
+        <img class="note-preview-img" src="img/logo.png" alt="Appsus Logo" title="Appsus">
         <router-link class="edit-link add-btn" :to="'/note/edit/'+note.id">edit</router-link>
     </div>
     `,
