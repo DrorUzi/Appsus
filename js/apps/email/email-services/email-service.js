@@ -8,7 +8,8 @@ export default {
     deleteEmail,
     getUnreadMails,
     changeToRead,
-    sendMail
+    sendMail,
+    getStaredEmails
 }
 
 var gEmails;
@@ -37,7 +38,6 @@ function findEmailById(id) {
     var email = gEmails.find(email => {
         return email.id === id
     });
-    utilsService.saveToStorage(EMAILS_KEY, gEmails)
     return Promise.resolve(email)
 }
 
@@ -63,6 +63,10 @@ function changeToRead(emailId) {
     currEmail.isRead = true
     utilsService.saveToStorage(EMAILS_KEY,gEmails)
 }
+function getStaredEmails(){
+    var emails =  gEmails.filter(email => email.isStared)
+    return Promise.resolve(emails)
+}
 
 var starterEmails = [
     {
@@ -74,9 +78,9 @@ var starterEmails = [
         sentFrom: 'moshe@gmail.com',
         isRead: false,
         isMarked: true,
-        sentAt: new Date().toLocaleString()
-
-
+        sentAt: new Date().toLocaleString(),
+        isStared:false,
+        isDraft: false,
     },
     {
         name: 'Ori',
@@ -87,7 +91,9 @@ var starterEmails = [
         sentFrom: 'Ori@gmail.com',
         isRead: false,
         isMarked: true,
-        sentAt: new Date().toLocaleString()
+        sentAt: new Date().toLocaleString(),
+        isStared:false,
+        isDraft: false,
 
     },
     {
@@ -97,9 +103,11 @@ var starterEmails = [
         body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
         sentTo: 'ori@gmail.com',
         sentFrom: 'dror@gmail.com',
-        isRead: true,
+        isRead: false,
         isMarked: false,
-        sentAt: new Date().toLocaleString()
+        sentAt: new Date().toLocaleString(),
+        isStared:true,
+        isDraft: false,
 
     },
     {
@@ -111,7 +119,9 @@ var starterEmails = [
         sentFrom: 'Dror@gmail.com',
         isRead: true,
         isMarked: true,
-        sentAt: new Date().toLocaleString()
+        sentAt: new Date().toLocaleString(),
+        isStared:false,
+        isDraft: true,
 
     },
     {
@@ -123,7 +133,9 @@ var starterEmails = [
         sentFrom: 'dror@gmail.com',
         isRead: true,
         isMarked: false,
-        sentAt: new Date().toLocaleString()
+        sentAt: new Date().toLocaleString(),
+        isStared:true,
+        isDraft: false,
 
     },
     {
@@ -135,7 +147,9 @@ var starterEmails = [
         sentFrom: 'dror@gmail.com',
         isRead: false,
         isMarked: false,
-        sentAt: new Date().toLocaleString()
+        sentAt: new Date().toLocaleString(),
+        isStared:false,
+        isDraft: true,
 
     },
     {
@@ -147,7 +161,9 @@ var starterEmails = [
         sentFrom: 'dror@gmail.com',
         isRead: false,
         isMarked: false,
-        sentAt: new Date().toLocaleString()
+        sentAt: new Date().toLocaleString(),
+        isStared:false,
+        isDraft: true,
 
     },
     {
@@ -159,7 +175,9 @@ var starterEmails = [
         sentFrom: 'dror@gmail.com',
         isRead: true,
         isMarked: false,
-        sentAt: new Date().toLocaleString()
+        sentAt: new Date().toLocaleString(),
+        isStared:true,
+        isDraft: false,
 
     },
     {
@@ -171,7 +189,9 @@ var starterEmails = [
         sentFrom: 'dror@gmail.com',
         isRead: false,
         isMarked: false,
-        sentAt: new Date().toLocaleString()
+        sentAt: new Date().toLocaleString(),
+        isStared:false,
+        isDraft: false,
 
     },
 

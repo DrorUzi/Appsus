@@ -9,6 +9,7 @@ import noteEdit from './apps/note/note-pages/note-edit.cmp.js';
 import details from './apps/email/email-pages/email-details.cmp.js';
 import bigPreview from './apps/email/email-cmps/email-big-preview.cmp.js';
 import compose from './apps/email/email-cmps/compose.cmp.js';
+import staredEmails from './apps/email/email-cmps/email-stared.cmp.js'
 
 
 const myRoutes = [
@@ -25,12 +26,20 @@ const myRoutes = [
                 component: emailList
             }, 
             {
-                path: 'preview/+id',
+                path: 'preview',
                 component: bigPreview
+            }, 
+            {
+                path: 'details/:id',
+                component: details
             }, 
             {
                 path: 'compose',
                 component: compose
+            },
+            {
+                path: 'stared',
+                component: staredEmails
             },
         ]
     },
