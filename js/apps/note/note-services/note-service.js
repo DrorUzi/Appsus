@@ -6,21 +6,38 @@ export const noteService = {
     findNoteById,
     saveNote,
     deleteNote,
+    findTodoById
 }
 
 const NOTES_KEY = 'notes'
 var gNotes;
 
-
-// add todo support - all the service functions .
 function findNoteById(noteId) {
     var selectedNote = gNotes.find(note => note.id === noteId)
     return Promise.resolve(selectedNote)
 }
 
+function createNoteTode(todos) {
+    var newTodos = todos.map(todo => {
+        return {
+            todoId: utilsService.makeId(),
+            txt: todo,
+            isDone: false
+        }
+    })
+    return newTodos
+}
+function findTodoById(todoId, todos) {
+    var currTodo = todos.find(todo => todo.id === todoId)
+    return currTodo
+}
+
 function saveNote(note, noteId) {
     if (!noteId) {
         var newNote = note
+        if (note.type === 'todo') {
+            newNote.todos = createNoteTode(newNote.todos)
+        }
         newNote.id = utilsService.makeId()
         gNotes.unshift(newNote)
     }
@@ -42,24 +59,11 @@ function deleteNote(noteId) {
     return Promise.resolve('note deleted successfully')
 }
 
-// function getCmps(){
-//     return previewCmps
-// }
-
-// var previewCmps = [
-//     {
-//         type: 'txt',
-//     },
-//     {
-//         type: 'img',
-//     },
-// ]
-
 var defaultNotes = [
     {
         id: utilsService.makeId(),
         title: 'img',
-        txt: 'lala',
+        data: 'lala',
         isPinned: false,
         type: 'img',
         editedAt: 'today'
@@ -67,7 +71,7 @@ var defaultNotes = [
     {
         id: utilsService.makeId(),
         title: 'txt',
-        txt: 'lala',
+        data: 'lala',
         isPinned: false,
         type: 'txt',
         editedAt: 'today'
@@ -75,7 +79,24 @@ var defaultNotes = [
     {
         id: utilsService.makeId(),
         title: 'todo',
-        txt: 'lala',
+        data: 'lala',
+        todos: [
+            {
+                todoId: utilsService.makeId(),
+                txt: 'eat',
+                isDone: true
+            },
+            {
+                todoId: utilsService.makeId(),
+                txt: 'sleep',
+                isDone: false
+            },
+            {
+                todoId: utilsService.makeId(),
+                txt: 'repeat',
+                isDone: false
+            },
+        ],
         isPinned: true,
         type: 'todo',
         editedAt: 'today'

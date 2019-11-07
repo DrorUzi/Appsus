@@ -9,8 +9,9 @@ export default {
     <section class="">
         <router-view></router-view>
         <section class="note-list">
-            <router-link class="list-item" :class="currNote.type" :key="currNote.id" :to="'/note/edit/'+currNote.id" v-for="currNote in notes">
-            <component :is="currNote.type+'Preview'" :note="currNote"></component></router-link>
+            
+            <component class="list-item" :class="currNote.type" :key="currNote.id"
+            v-for="currNote in notes" :is="currNote.type+'Preview'" :note="currNote"></component>
         </section>
     </section>
     `,

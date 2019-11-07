@@ -2,6 +2,21 @@
     border: 1px solid black;
     padding: 10px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 100%;
+}
+
+.edit-link{
+    z-index: 9999;
+}
+
+img{
+    width: 80%;
+}
+
+.note-list a {
+    text-decoration: none;
+    color: black;
 }
