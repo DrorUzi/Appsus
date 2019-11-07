@@ -7,6 +7,7 @@ import note from './apps/note/note-pages/note-app.cmp.js';
 import noteEdit from './apps/note/note-pages/note-edit.cmp.js';
 import details from './apps/email/email-pages/email-details.cmp.js';
 import bigPreview from './apps/email/email-cmps/email-big-preview.cmp.js';
+import compose from './apps/email/email-cmps/compose.cmp.js';
 
 
 const myRoutes = [
@@ -21,6 +22,10 @@ const myRoutes = [
             {
                 path: 'preview/+id',
                 component: bigPreview
+            }, 
+            {
+                path: 'compose',
+                component: compose
             },
         ]
     },

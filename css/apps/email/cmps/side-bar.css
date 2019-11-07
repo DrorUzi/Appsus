@@ -3,7 +3,6 @@
     display: flex;
     width: 35%;
     padding: 20px;
-    /* align-items: center; */
     flex-direction: column;
     justify-content: space-between;
     height: 40%;
@@ -49,4 +48,13 @@
 .opt:hover{
     background-color: rgba(255, 0, 0, 0.315);
     border-radius: 0 30px 30px 0;
+}
+
+.enread{
+    padding: 5px;
+    background-color:#ffdcdc;
+    border-radius: 10px;
+    width: 85%;
+    margin-top: 5px;
+
 }

@@ -15,9 +15,7 @@ export default {
         </div>
     </section>
     `,
-    created() {
-    },
-
+  
     computed: {
         currencyIcon() {
             let currency = this.book.listPrice.currencyCode

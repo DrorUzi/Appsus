@@ -1,12 +1,13 @@
 'use strict';
 
 import emailBigPreview from './email-big-preview.cmp.js'
+import { eventBus } from '../../../main-services/eventbus-service.js'
 
 
 export default {
-    props:['email'],
+    props: ['email'],
     template: `
-        <section @click="isClick" class="email-preview-container"> 
+        <section @click="isClick(email.id,email)" class="email-preview-container"> 
             <div class="preview-info" :class="{clicked : isClicked}">
                 <div class="name-preview">
                     <h3>{{email.name}}</h3>
@@ -20,25 +21,26 @@ export default {
            <email-big-preview :email="email" :class="{hidden : !isClicked}"></email-big-preview>
         </section>
     `,
-    data(){
-        return{
-            isClicked :false
-
+    data() {
+        return {
+            isClicked: false
         }
     },
-    methods:{
-        isClick(){
-           this.isClicked = !this.isClicked
+    methods: {
+        isClick(emailId,email) {
+            this.isClicked = !this.isClicked
+            if(!email.isRead) eventBus.$emit('read', (emailId))
         },
     },
-    computed:{
-        checkIfRead(){
-            if(this.email.isRead)return '../../../../img/email/read.png'
+    computed: {
+        checkIfRead() {
+            if (this.email.isRead) return '../../../../img/email/read.png'
             else return '../../../../img/email/unread.png'
-        }
+        },
+
     },
-    components:{
+    components: {
         emailBigPreview
     }
-   
+
 }
