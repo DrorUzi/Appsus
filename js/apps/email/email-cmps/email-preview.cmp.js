@@ -28,6 +28,7 @@ export default {
     },
     methods: {
         isClick(emailId,email) {
+            console.log(email);
             this.isClicked = !this.isClicked
             if(!email.isRead) eventBus.$emit('read', (emailId))
         },

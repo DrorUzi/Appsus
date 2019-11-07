@@ -1,7 +1,13 @@
 .email-app{
     width: 100%;
-    height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     padding: 30px;
+    flex-direction: column;
+}
+
+.main-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

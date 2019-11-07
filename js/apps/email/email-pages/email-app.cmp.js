@@ -9,9 +9,15 @@ import { eventBus } from '../../../main-services/eventbus-service.js'
 export default {
   template: `
     <section class="email-app" >
-         <side-bar :unRead="unRead"></side-bar>
-         <email-filter @filtered="setFilter"></email-filter>
-         <router-view></router-view>
+      <div class="filter-container">
+      <div class="filter-prev"> 
+        </div>
+        <email-filter @filtered="setFilter"></email-filter>
+      </div>
+        <div class="main-info">
+          <side-bar :unRead="unRead"></side-bar>
+            <router-view></router-view>
+        </div>
     </section>
     `,
   data() {
@@ -19,35 +25,26 @@ export default {
       emails: [],
       unRead: null,
       filterBy: null,
-      emailsToShow: []
 
     }
   },
   methods: {
     setFilter(filterBy) {
       this.filterBy = filterBy
-      this.emailsToShow = this.getEmailsToShow()
-      eventBus.$emit('emailToShow', this.emailsToShow)
+      eventBus.$emit('emailToShow', this.newEmailsToShow)
     }
   },
   computed: {
-    getEmailsToShow() {
-      console.log(this.filterBy);
+   newEmailsToShow() {
       if (!this.filterBy) return this.emails;
       var regex = new RegExp(`${this.filterBy.title}`, 'i');
       var newEmails = this.emails.filter(email => {
-        console.log(email,'3');
-        if (this.filterBy.type) {
-          console.log('1',this.filterBy.type);
-          return regex.test(email.subject) && email.isRead === this.filterBy.type
+        if (this.filterBy.read === 'true') {
+          return regex.test(email.subject) && email.isRead
         }
-        else {
-          console.log('2',email.subject);
-          return regex.test(email.subject)
-        } 
-
+        else if (this.filterBy.read === 'false') return regex.test(email.subject) && !email.isRead
+        else return regex.test(email.subject)
       })
-      console.log('aa',newEmails);
       return newEmails
     }
   },
@@ -62,9 +59,11 @@ export default {
         this.emails = emails
       })
     eventBus.$on('read', (emailId) => {
+      console.log('changing to read!')
       emailService.changeToRead(emailId)
       emailService.getUnreadMails()
-        .then(res => this.unRead = res)
+        .then(res => {this.unRead = res})
+      // emailService.getEmails().then(res => this.emails = res)
     })
     eventBus.$on('newMail', (newEmail) => {
       emailService.sendMail(newEmail)

@@ -1,5 +1,3 @@
-'use strict';
-
 import emailPreview from './email-preview.cmp.js'
 import emailService from '../email-services/email-service.js'
 import { eventBus } from '../../../main-services/eventbus-service.js';
@@ -20,11 +18,11 @@ export default {
         emailPreview
     },
     created(){
-         emailService.getEmails()
+         emailService.getStaredEmails()
          .then(emails => this.emails = emails)
-         eventBus.$on('emailToShow',(emails)=> {
-            this.emails = emails
-         })
+        // //   eventBus.$on('emailToShow',(emails)=> {
+        //     this.emails = emails
+        //  })
 
     }
 }

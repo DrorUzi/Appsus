@@ -1,0 +1,41 @@
+.form-control {
+    font-family: 'FontAwesome', "Open Sans", Verdana
+}
+
+.email-filter {
+    display: flex;
+    font-size: 1.7rem;
+    justify-content: flex-start;
+    width: 40%;
+}
+
+.filter-prev {
+    width: 50%;
+}
+
+.filter-container {
+    display: flex;
+    width: 100%;
+}
+
+.email-filter input {
+    border: none;
+    border: 1px solid lightcoral;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    margin: 0;
+    padding: 10px;
+    font-size: 0.7em;
+    outline: none;
+    width: 80%;
+}
+
+.email-filter select {
+    border: 1px solid lightcoral;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    margin: 0;
+    padding: 10px;
+    font-size: 1rem;
+    outline: none;
+}

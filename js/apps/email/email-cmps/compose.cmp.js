@@ -17,9 +17,7 @@ export default {
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required v-model="email.sentTo">
                 <textarea class="input-text" placeholder="body" v-model="email.body">
                 </textarea>
-            <router-link to="/email/list">
                 <button class="add-btn"><img src="../../../../img/email/send2.png">SEND</button>
-            </router-link>
          </form>
     </section>
     `,
@@ -40,6 +38,7 @@ export default {
     methods: {
         submitForm() {
             eventBus.$emit('newMail', JSON.parse(JSON.stringify(this.email)) )
+            this.$router.push('/email/list')
         }
     }
 }
