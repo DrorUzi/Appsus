@@ -12,10 +12,3 @@ new Vue({
     `,
 
 })
-
-//need to add the user msg stuff
-
-// /
-// <user-msg></user-msg>
-// <main-footer></main-footer>
-// /

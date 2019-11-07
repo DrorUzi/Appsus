@@ -5,8 +5,7 @@ export default {
     template: `
     <div class="note-preview">
         <h2>Title: {{note.title}}</h2>
-        <h2>id {{note.id}}</h2>
-        <h3>{{note.txt}}</h3>
+        <img src="img/logo.png" alt="Appsus Logo" title="Appsus">
     </div>
     `,
     data() {

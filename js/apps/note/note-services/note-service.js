@@ -12,7 +12,7 @@ const NOTES_KEY = 'notes'
 var gNotes;
 
 
-
+// add todo support - all the service functions .
 function findNoteById(noteId) {
     var selectedNote = gNotes.find(note => note.id === noteId)
     return Promise.resolve(selectedNote)
@@ -42,14 +42,18 @@ function deleteNote(noteId) {
     return Promise.resolve('note deleted successfully')
 }
 
+// function getCmps(){
+//     return previewCmps
+// }
 
-var previewCmps = [
-    {
-        type: 'txt',
-        
-
-    },
-]
+// var previewCmps = [
+//     {
+//         type: 'txt',
+//     },
+//     {
+//         type: 'img',
+//     },
+// ]
 
 var defaultNotes = [
     {

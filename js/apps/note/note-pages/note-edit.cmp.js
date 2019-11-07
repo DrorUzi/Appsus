@@ -6,17 +6,17 @@ import { eventBus } from "../../../main-services/eventbus-service.js"
 export default {
     template: `
     <section v-if="note">
-        <form @submit.prevent class="note-edit">
+        <form @submit.prevent class="note-edit form-review">
             <div class="edit-inputs">
                 <input type="text" placeholder="Title" v-model="note.title" ref="titleInput">
-                <textarea cols="30" rows="3" v-model="note.txt" placeholder="Write text here"></textarea>
+                <textarea class="input-text" cols="30" :rows="textAreaSize(note.type)" v-model="note.txt" :placeholder="placeholderTxt(note.type)"></textarea>
                 <p v-if="note.editedAt" class="edited-at">Last edit at:{{note.editedAt}}</p>
             </div>
-            <div class="note-checks">
-                <div>
-                    <label for="pin">PIN</label>
-                    <input id="pin" type="checkbox" v-model="note.isPinned">
-                </div>
+            <div>
+                <label for="pin">PIN</label>
+                <input id="pin" type="checkbox" v-model="note.isPinned">
+            </div>
+            <div class="note-checks" v-if="!noteId">
                 <div>
                     <label for="txt">txt</label>
                 <input id="txt" type="radio" v-model="note.type" value="txt">
@@ -30,9 +30,9 @@ export default {
                     <input id="todo" type="radio" v-model="note.type" value="todo">
                 </div>
             </div> 
-            <div>
-            <button @click="onSaveNote">Save</button>
-            <button @click="onDeleteNote">Delete</button>
+            <div class="add-btns">
+            <button @click="onSaveNote" class="add-btn">Save</button>
+            <button @click="onDeleteNote" class="add-btn">Delete</button>
             </div>
         </form>
     </section>
@@ -60,6 +60,7 @@ export default {
                     txt: '',
                     isPinned: false,
                     type: 'txt',
+                    data:'',
                     editedAt: ''
                 }
             }
@@ -100,13 +101,26 @@ export default {
                 }
             })
         },
+        textAreaSize(noteType) {
+            let rowCount;
+            if (noteType === 'txt') rowCount = 3
+            else rowCount = 1
+            return rowCount
+        },
+        placeholderTxt(noteType) {
+            let placeholder;
+            if (noteType === 'txt') placeholder = 'text'
+            else if (noteType === 'todo') placeholder = 'todo'
+            else placeholder = 'image URL'
+            return `Enter ${placeholder} here`
+        },
     },
     computed: {
 
     },
     mounted() {
-    //    this.$refs.titleInput.focus()
-    // gets error
+        //    this.$refs.titleInput.focus()
+        // gets error
     },
     created() {
         this.loadNote()
