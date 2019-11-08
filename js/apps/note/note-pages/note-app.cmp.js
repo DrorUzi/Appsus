@@ -7,7 +7,7 @@ export default {
   template: `
     <section class="keep-app">
       <router-link class="add-note" to="/note/edit">Add a note</router-link>
-      <note-filter @filtered="setFilter"></note-filter>
+      <note-filter class="note-filter" @filtered="setFilter"></note-filter>
       <note-list :notes="notesToShow"></note-list>
     </section>
     `,

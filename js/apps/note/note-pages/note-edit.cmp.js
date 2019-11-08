@@ -6,7 +6,7 @@ import { eventBus } from "../../../main-services/eventbus-service.js"
 export default {
     template: `
     <section v-if="note">
-        <form @submit.prevent="onSaveNote" class="note-edit form-edit">
+        <form @submit.prevent="onSaveNote" class="note-edit">
             <div class="edit-inputs">
                 <input class="edit-title-input" type="text" placeholder="Title" v-model="note.title" ref="titleInput">
                 <textarea ref="textArea" v-if="checkNoteTodo" cols="30" :rows="textAreaSize(note.type)" v-model="note.data" :placeholder="placeholderTxt(note.type)"></textarea>
@@ -17,24 +17,29 @@ export default {
                 <button @click="addTodo" class="edit-add-btn add-todo-btn" type="button" v-if="todoBtn">Add Todo</button>
                 <p v-if="note.editedAt" class="edited-at">Last edit at:{{note.editedAt}}</p>
             </div>
-            <div>
-                <label for="pin">PIN</label>
-                <input id="pin" type="checkbox" v-model="note.isPinned">
-            </div>
+
             <div class="note-checks" v-if="!noteId">
                 <div>
-                    <label for="txt">txt</label>
-                <input id="txt" type="radio" v-model="note.type" value="txt">
+                    <label for="txt"><i class="fas fa-font" :class="{'icon-clicked':note.type==='txt'}"></i></label>
+                <input class="hide" id="txt" type="radio" v-model="note.type" value="txt">
                 </div>
                 <div>
-                    <label for="img">img</label>
-                    <input id="img" type="radio" v-model="note.type" value="img">
+                    <label for="img"><i class="fas fa-image" :class="{'icon-clicked':note.type==='img'}"></i></label>
+                    <input class="hide" id="img" type="radio" v-model="note.type" value="img">
                 </div>
                 <div>
-                    <label for="todo">todo</label>
-                    <input id="todo" type="radio" v-model="note.type" value="todo">
+                    <label for="todo"><i class="fas fa-list-ul" :class="{'icon-clicked':note.type==='todo'}"></i></label>
+                    <input class="hide" id="todo" type="radio" v-model="note.type" value="todo">
                 </div>
             </div> 
+                <div>
+                    <label for="pin"><i class="fas fa-thumbtack" :class="{'icon-clicked':note.isPinned}"></i></label>
+                    <input id="pin" class="hide" type="checkbox" v-model="note.isPinned">
+                </div>
+                <div>
+                    <label for="color"><i class="fas fa-fill-drip icon-clicked"></i></label>
+                    <input class="hide" id="color" type="color" v-model="note.bcgColor">
+                </div>
             <div class="add-btns">
             <button class="edit-add-btn">Save</button>
             <button type="button" @click="onDeleteNote" class="edit-add-btn">Delete</button>
@@ -74,20 +79,23 @@ export default {
                     data: '',
                     isPinned: false,
                     type: 'txt',
-                    editedAt: ''
+                    editedAt: '',
+                    bcgColor: ''
                 }
             }
         },
         onSaveNote() {
             this.note.editedAt = new Date().toLocaleString()
             noteService.saveNote(this.note, this.noteId)
+                //add succsses msg
                 .then(() => {
                     this.note = {
                         title: '',
                         data: '',
                         isPinned: false,
                         type: 'txt',
-                        editedAt: ''
+                        editedAt: '',
+                        bcgColor: ''
                     }
                     this.$router.push('/note');
                 })
@@ -134,17 +142,17 @@ export default {
             }
             else return false
         },
-        checkNoteTodo(){
-            if(this.note.todos){
+        checkNoteTodo() {
+            if (this.note.todos) {
                 if (this.note.todos[0].todoId)
-                return false
+                    return false
             }
-            else if(this.note.type!=='img') return true
+            else if (this.note.type !== 'img') return true
         },
-        todoBtn(){
-            if(this.note.todos){
+        todoBtn() {
+            if (this.note.todos) {
                 if (this.note.todos[0].todoId)
-                return false
+                    return false
             }
             else if (this.note.type === "todo") return true
             else return false

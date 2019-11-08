@@ -1,9 +1,9 @@
-.note-edit{
+.note-edit {
     border: 1px solid #F08080;
-    background-color: #FFDCDC;
+    background-color: rgba(255, 220, 220, 0.568);
     padding: 10px;
     margin: 10px auto;
-    height: 150px;
+    height: 200px;
     width: 50%;
     display: flex;
     justify-content: space-around;
@@ -18,51 +18,45 @@
     background-color: rgba(255, 255, 255, 0);
     margin: 0;
     padding: 10px;
-    font-size: 0.7em;
+    font-size: 1rem;
     outline: none;
     margin-bottom: 10px;
 }
 
-.form-edit {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    font-size: 1.7rem;
-    width: 100%;
-}
 
-.form-edit textarea{
+.note-edit textarea {
     border: 1px solid lightcoral;
-    background-color: #FFDCDC;
+    background-color: rgba(255, 220, 220, 0.5);
     border-radius: 10px;
     min-height: 25px;
     margin: 5px 0;
-
     outline: none;
     resize: none;
+    width: 227px;
+
 }
 
-.url-input{
+.url-input {
     font-family: monospace;
     border: 1px solid lightcoral;
-    background-color: #FFDCDC;
+    background-color: rgba(255, 220, 220, 0.459);
     border-radius: 10px;
     min-height: 25px;
     outline: none;
+    width: 227px;
+
 }
 
-.edit-inputs{
-    height: 100%;
+.edit-inputs {
+    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
-
-
-.edit-add-btn{
+.edit-add-btn {
     background-color: rgb(253, 211, 211);
-    border: 1px solid lightcoral;
+    border: 1px solid rgba(240, 128, 128, 0.445);
     border-radius: 10px;
     width: 6rem;
     color: black;
@@ -73,29 +67,62 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px
+    margin: 10px;
+    outline: none;
+}
+
+.edit-add-btn:hover {
+    background-color: rgba(207, 172, 172, 0.548);
 
 }
 
-.add-todo-btn{
+.add-todo-btn {
     margin: 10px auto
-
 }
 
-.edited-at{
+.edited-at {
     margin: 0;
     padding: 0;
     font-size: .8rem;
 }
 
-.note-checks{
+.note-checks {
+    height: 80%;
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-.add-btns{
+.add-btns {
     display: flex;
+    flex-direction: column;
 }
 
-.done-todo{
+.done-todo {
     text-decoration: line-through;
+}
+
+/* icons */
+
+.fas {
+    color: rgba(136, 136, 136, 0.575);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.icon-clicked {
+    color: black;
+}
+
+.fas:hover {
+    color: rgb(136, 136, 136);
+    cursor: pointer;
+}
+
+.fas:active {
+    color: rgb(255, 255, 255)
+}
+
+.hide {
+    display: none;
 }
