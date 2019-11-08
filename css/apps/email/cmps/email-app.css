@@ -1,4 +1,6 @@
+
 .email-app{
+    background-image: url('../../../../img/email/bcg4.jpg');
     width: 100%;
     display: flex;
     justify-content: space-around;
