@@ -9,7 +9,6 @@ export default {
     <section class="">
         <router-view></router-view>
         <section class="note-list">
-            
             <component class="list-item" :class="currNote.type" :key="currNote.id"
             v-for="currNote in notes" :is="currNote.type+'Preview'" :note="currNote"></component>
         </section>
@@ -22,7 +21,6 @@ export default {
         }
     },
     methods: {
-
     },
     computed: {
     },

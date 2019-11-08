@@ -6,7 +6,7 @@ export const noteService = {
     findNoteById,
     saveNote,
     deleteNote,
-    findTodoById
+    findTodoById,
 }
 
 const NOTES_KEY = 'notes'
@@ -17,7 +17,7 @@ function findNoteById(noteId) {
     return Promise.resolve(selectedNote)
 }
 
-function createNoteTode(todos) {
+function _createNoteTodo(todos) {
     var newTodos = todos.map(todo => {
         return {
             todoId: utilsService.makeId(),
@@ -27,8 +27,9 @@ function createNoteTode(todos) {
     })
     return newTodos
 }
+
 function findTodoById(todoId, todos) {
-    var currTodo = todos.find(todo => todo.id === todoId)
+    var currTodo = todos.find(todo => todo.todoId === todoId)
     return currTodo
 }
 
@@ -36,7 +37,7 @@ function saveNote(note, noteId) {
     if (!noteId) {
         var newNote = note
         if (note.type === 'todo') {
-            newNote.todos = createNoteTode(newNote.todos)
+            newNote.todos =  _createNoteTodo(newNote.todos)
         }
         newNote.id = utilsService.makeId()
         gNotes.unshift(newNote)
@@ -63,7 +64,7 @@ var defaultNotes = [
     {
         id: utilsService.makeId(),
         title: 'img',
-        data: 'lala',
+        data: 'https://imgcomfort.com/Userfiles/Upload/images/illustration-geiranger.jpg',
         isPinned: false,
         type: 'img',
         editedAt: 'today'
@@ -79,7 +80,7 @@ var defaultNotes = [
     {
         id: utilsService.makeId(),
         title: 'todo',
-        data: 'lala',
+        data: '',
         todos: [
             {
                 todoId: utilsService.makeId(),
@@ -89,7 +90,7 @@ var defaultNotes = [
             {
                 todoId: utilsService.makeId(),
                 txt: 'sleep',
-                isDone: false
+                isDone: true
             },
             {
                 todoId: utilsService.makeId(),
@@ -117,3 +118,5 @@ function _loadGNotes() {
 function getNotes() {
     return Promise.resolve(gNotes)
 }
+
+

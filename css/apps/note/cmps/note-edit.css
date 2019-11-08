@@ -11,11 +11,75 @@
     border-radius: 20px;
 }
 
+.edit-title-input {
+    border: none;
+    border-bottom: 1px solid lightcoral;
+    margin: 10px;
+    background-color: rgba(255, 255, 255, 0);
+    margin: 0;
+    padding: 10px;
+    font-size: 0.7em;
+    outline: none;
+    margin-bottom: 10px;
+}
+
+.form-edit {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 1.7rem;
+    width: 100%;
+}
+
+.form-edit textarea{
+    border: 1px solid lightcoral;
+    background-color: #FFDCDC;
+    border-radius: 10px;
+    min-height: 25px;
+    margin: 5px 0;
+
+    outline: none;
+    resize: none;
+}
+
+.url-input{
+    font-family: monospace;
+    border: 1px solid lightcoral;
+    background-color: #FFDCDC;
+    border-radius: 10px;
+    min-height: 25px;
+    outline: none;
+}
+
 .edit-inputs{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+
+
+.edit-add-btn{
+    background-color: rgb(253, 211, 211);
+    border: 1px solid lightcoral;
+    border-radius: 10px;
+    width: 6rem;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px
+
+}
+
+.add-todo-btn{
+    margin: 10px auto
+
 }
 
 .edited-at{

@@ -8,12 +8,8 @@
     width: 100%;
 }
 
-.edit-link{
-    z-index: 9999;
-}
-
 .note-preview-img{
-    width: 80%;
+    width: 100%;
 }
 
 .note-list a {

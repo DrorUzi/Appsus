@@ -8,8 +8,8 @@ export default {
     <div class="note-preview">
         <h2>Title: {{note.title}}</h2>
         <ul>
-            <li :class="isDone(noteTodo)" v-for="noteTodo in note.todos">
-                {{noteTodo.txt}}
+            <li v-for="todo in note.todos" :key="todo.todoId" :class="isDone(todo)" @click="markAsDone(todo.todoId)">
+                {{todo.txt}}
             </li>
         </ul>
         <router-link class="edit-link add-btn" :to="'/note/edit/'+note.id">edit</router-link>
@@ -22,13 +22,12 @@ export default {
     },
     methods: {
         isDone(todo) {
-
-            if (todo.isDone) {
-                return 'done-todo'
-            }
-            // var currTodo = noteService.findTodoById(todoId,todos)
-            // console.log(currTodo);
-
+            return (todo.isDone)? 'done-todo' : ''
+        },
+        markAsDone(todoId){
+            let currTodo = noteService.findTodoById(todoId,this.note.todos)
+            currTodo.isDone = !currTodo.isDone;
+            console.log(currTodo);            
         }
 
     },
