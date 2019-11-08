@@ -2,7 +2,6 @@
     border-bottom: 1px solid lightcoral;
     width: 100%;
     display: flex;
-    /* margin: 10px; */
     align-items: center;
     flex-direction: column;
     cursor: pointer;
@@ -14,6 +13,7 @@
 
 .read-envelope-img {
     height: 1.5rem;
+    margin-left:20px;
 }
 
 .name-preview{
@@ -30,7 +30,7 @@
 }
 .date-preview{
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     width: 40%;
 }
 .preview-info{

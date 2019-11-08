@@ -8,12 +8,8 @@ import { eventBus } from '../../../main-services/eventbus-service.js'
 
 export default {
   template: `
-    <section class="email-app" >
-      <div class="filter-container">
-      <div class="filter-prev"> 
-        </div>
-        <email-filter @filtered="setFilter"></email-filter>
-      </div>
+    <section class="email-app container" >
+        <email-filter @sort="setSort" @filtered="setFilter"></email-filter>
         <div class="main-info">
           <side-bar :unRead="unRead"></side-bar>
             <router-view></router-view>
@@ -25,17 +21,22 @@ export default {
       emails: [],
       unRead: null,
       filterBy: null,
-
+      sortBy: []
     }
   },
   methods: {
     setFilter(filterBy) {
       this.filterBy = filterBy
       eventBus.$emit('emailToShow', this.newEmailsToShow)
-    }
+    },
+    setSort(sortBy) {
+      this.sortBy = sortBy
+      eventBus.$emit('sortedEmails', this.sort)
+
+    },
   },
   computed: {
-   newEmailsToShow() {
+    newEmailsToShow() {
       if (!this.filterBy) return this.emails;
       var regex = new RegExp(`${this.filterBy.title}`, 'i');
       var newEmails = this.emails.filter(email => {
@@ -46,6 +47,22 @@ export default {
         else return regex.test(email.subject)
       })
       return newEmails
+    },
+    sort() {
+      if (!this.sortBy) return this.emails;
+      if (this.sortBy === 'title') {
+        var sortedByTitle = this.emails.sort((a, b) => {
+          var titleA = a.subject.toUpperCase();
+          var titleB = b.subject.toUpperCase();
+          return (titleA < titleB) ? -1 : (titleA > titleB) ? 1 : 0
+        })
+        return sortedByTitle
+      } else {
+        var sortedByDate = this.emails.sort((a, b) => {
+          return (a.sentAt > b.sentAt) ? -1 : (a.sentAt < b.sentAt) ?1 :0
+        })
+        return sortedByDate
+      }
     }
   },
   components: {
@@ -59,14 +76,22 @@ export default {
         this.emails = emails
       })
     eventBus.$on('read', (emailId) => {
-      console.log('changing to read!')
       emailService.changeToRead(emailId)
       emailService.getUnreadMails()
-        .then(res => {this.unRead = res})
-      // emailService.getEmails().then(res => this.emails = res)
+        .then(res => { this.unRead = res })
     })
     eventBus.$on('newMail', (newEmail) => {
       emailService.sendMail(newEmail)
+    })
+    eventBus.$on('newDraft', (newDraft) => {
+      emailService.saveDraft(newDraft)
+    })
+    eventBus.$on('delete', () => {
+      emailService.getInbox()
+        .then(emails => {
+          this.emails = emails
+          eventBus.$emit('deletedMails', this.emails)
+        })
     })
   },
   mounted() {

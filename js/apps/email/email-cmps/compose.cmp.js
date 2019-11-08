@@ -5,33 +5,40 @@ import { eventBus } from "../../../main-services/eventbus-service.js"
 export default {
     template: `
     <section class="compose"> 
-        <div class="form-header"><h1>New Message</h1></div>
-        <form class="form-review" @submit.prevent="submitForm">
-            <input class="input-text" ref="inputName" type="text"
+        <div class="compose-header"><h1>New Message</h1></div>
+        <form class="compose-form" @submit.prevent="submitForm">
+            <input class="compose-input" ref="inputName" type="text"
                  placeholder="Name" v-model="email.name" />
-             <input class="input-text" ref="inputName" type="text"
-                placeholder="Subject" v-model="email.Subject" />
-                <input class="input-text" type="email" placeholder="Enter your email"
+             <input class="compose-input" ref="inputName" type="text"
+                placeholder="Subject" v-model="email.subject" required />
+                <input class="compose-input" type="email" placeholder="Enter your email"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required  v-model="email.sentFrom">
-                <input class="input-text" type="email" placeholder="Send to" 
+                <input class="compose-input" type="email" placeholder="Send to" 
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required v-model="email.sentTo">
-                <textarea class="input-text" placeholder="body" v-model="email.body">
+                <textarea class="compose-input" placeholder="body" v-model="email.body">
                 </textarea>
-                <button class="add-btn"><img src="../../../../img/email/send2.png">SEND</button>
+                <div class="compose-btn-container">
+                <button type="submit" class="send-btn"><img src="../../../../img/email/send2.png">Send</button>
+                <button type="button" @click="saveDraft" class="draft-btn">Save as draft</button>
+</div>
          </form>
+
     </section>
     `,
     data(){
         return {
             email : {
-                Subject: '',
+                subject: '',
                 name: '',
                 body: '',
                 sentTo: '',
                 sentFrom: '',
                 isRead: false,
                 isMarked: false,
-                sentAt: new Date().toLocaleString()
+                sentAt: new Date().toLocaleString(),
+                isStared:false,
+                isDeleted:false,
+                isSent: true
             }
         }
     },
@@ -39,6 +46,10 @@ export default {
         submitForm() {
             eventBus.$emit('newMail', JSON.parse(JSON.stringify(this.email)) )
             this.$router.push('/email/list')
+        },
+        saveDraft(){
+            eventBus.$emit('newDraft', JSON.parse(JSON.stringify(this.email)) )
+            this.$router.push('/email/draft')
         }
     }
 }

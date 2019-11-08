@@ -10,6 +10,10 @@ import details from './apps/email/email-pages/email-details.cmp.js';
 import bigPreview from './apps/email/email-cmps/email-big-preview.cmp.js';
 import compose from './apps/email/email-cmps/compose.cmp.js';
 import staredEmails from './apps/email/email-cmps/email-stared.cmp.js'
+import deletedEmails from './apps/email/email-cmps/email-deleted.cmp.js'
+import sentEmails from './apps/email/email-cmps/email-sent.cmp.js'
+import draftsEmails from './apps/email/email-cmps/email-draft.cmp.js'
+
 
 
 const myRoutes = [
@@ -40,6 +44,18 @@ const myRoutes = [
             {
                 path: 'stared',
                 component: staredEmails
+            },
+            {
+                path: 'deleted',
+                component: deletedEmails
+            },
+            {
+                path: 'sent',
+                component: sentEmails
+            },
+            {
+                path: 'draft',
+                component: draftsEmails
             },
         ]
     },
