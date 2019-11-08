@@ -1,8 +1,6 @@
-'use strict';
-
 import emailPreview from './email-preview.cmp.js'
 import emailService from '../email-services/email-service.js'
-import { eventBus } from '../../../main-services/eventbus-service.js';
+
 
 export default {
     template: `
@@ -20,7 +18,7 @@ export default {
         emailPreview
     },
     created(){
-         emailService.getInbox()
+         emailService.getDeletedEmails()
          .then(emails => this.emails = emails)
          eventBus.$on('emailToShow',(emails)=> {
             this.emails = emails
@@ -28,9 +26,6 @@ export default {
          eventBus.$on('sortedEmails',(emails)=> {
             this.emails = emails
          })
-         eventBus.$on('deletedMails',(emails)=> {
-            this.emails = emails
-        })
     }
 }
 

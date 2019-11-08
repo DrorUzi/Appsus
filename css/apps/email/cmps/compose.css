@@ -2,14 +2,17 @@
     height: 90vh;
     width: 70%;
     border: 1px solid lightcoral;
+    border-radius: 5px;
 }
 
-.form-header{
+.compose-header{
     background-color: #171717cc;
     color: white;
     padding: 10px;
+    border-radius: 5px;
+
 }
-.form-review {
+.compose-form {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -21,7 +24,7 @@ input[type=text].input-name {
     margin: 0;
 }
 
-.input-text {
+.compose-input {
     border: none;
     border-bottom: 1px solid lightcoral;
     margin: 10px;
@@ -32,35 +35,55 @@ input[type=text].input-name {
     outline: none;
 }
 
-.form-review textarea{
+.compose-form textarea{
     height: 60%;
     border: none;
     resize: none;
 }
 
-.add-btn {
+.send-btn {
     background-color: rgb(253, 211, 211);
     border: 1px solid lightcoral;
     border-radius: 10px;
     width: 6rem;
     color: black;
-    padding: 5px;
+    padding: 2px;
     text-align: center;
     font-size: 1rem;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px
+    margin-left: 10px;
+    outline: none;
+
 }
 
-.add-btn img {
+.send-btn img {
     margin-right: 5px;
     margin-bottom: 5px;
-    width: 1.5rem;
+    width: 1rem;
 }
 
-.add-btn:hover {
+.send-btn:hover {
     background-color: rgb(250, 160, 160);
 }
 
+.compose-btn-container{
+    display: flex;
+    justify-content: space-between;
+
+}
+.draft-btn{
+    background-color: rgb(253, 211, 211);
+    border: 1px solid lightcoral;
+    border-radius: 10px;
+    color: black;
+    padding: 8px;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
+    align-items: center;
+    margin-right: 10px;
+    outline: none;
+}

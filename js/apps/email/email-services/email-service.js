@@ -9,17 +9,29 @@ export default {
     getUnreadMails,
     changeToRead,
     sendMail,
-    getStaredEmails
+    getStaredEmails,
+    getDraftEmails,
+    saveDraft,
+    getInbox,
+    getDeletedEmails,
+    getSentEmails
 }
 
 var gEmails;
 const EMAILS_KEY = 'emails'
 
+function getInbox() {
+    var inbox = gEmails.filter(email => {
+        return !email.isDraft && !email.isDeleted
+    })
+    return Promise.resolve(inbox)
+}
+
 function deleteEmail(id) {
-    var idx = gEmails.findIndex(email => {
+    var email = gEmails.find(email => {
         return email.id === id
     })
-    gEmails.splice(idx, 1)
+    email.isDeleted = true
     utilsService.saveToStorage(EMAILS_KEY, gEmails)
     return Promise.resolve()
 }
@@ -49,24 +61,49 @@ function getUnreadMails() {
     return Promise.resolve(res)
 }
 
-function sendMail(newEmail){
+function sendMail(newEmail) {
     newEmail.id = utilsService.makeId()
     gEmails.push(newEmail)
-    utilsService.saveToStorage(EMAILS_KEY,gEmails)
+    utilsService.saveToStorage(EMAILS_KEY, gEmails)
 
 }
 
 function changeToRead(emailId) {
     var currEmail = gEmails.find(email => {
-       return email.id === emailId
+        return email.id === emailId
     })
     currEmail.isRead = true
-    utilsService.saveToStorage(EMAILS_KEY,gEmails)
+    utilsService.saveToStorage(EMAILS_KEY, gEmails)
 }
-function getStaredEmails(){
-    var emails =  gEmails.filter(email => email.isStared)
+
+function getStaredEmails() {
+    var emails = gEmails.filter(email => email.isStared)
     return Promise.resolve(emails)
 }
+
+function getDraftEmails() {
+    var emails = gEmails.filter(email => email.isDraft)
+    return Promise.resolve(emails)
+}
+
+function getDeletedEmails() {
+    var emails = gEmails.filter(email => email.isDeleted)
+    return Promise.resolve(emails)
+}
+
+function saveDraft(saveDraft) {
+    saveDraft.id = utilsService.makeId()
+    saveDraft.isDraft = true
+    gEmails.push(saveDraft)
+    utilsService.saveToStorage(EMAILS_KEY, gEmails)
+
+}
+
+function getSentEmails() {
+    var emails = gEmails.filter(email => email.isSent)
+    return Promise.resolve(emails)
+}
+
 
 var starterEmails = [
     {
@@ -79,7 +116,7 @@ var starterEmails = [
         isRead: false,
         isMarked: true,
         sentAt: new Date().toLocaleString(),
-        isStared:false,
+        isStared: false,
         isDraft: false,
     },
     {
@@ -92,8 +129,9 @@ var starterEmails = [
         isRead: false,
         isMarked: true,
         sentAt: new Date().toLocaleString(),
-        isStared:false,
+        isStared: false,
         isDraft: false,
+
 
     },
     {
@@ -106,8 +144,9 @@ var starterEmails = [
         isRead: false,
         isMarked: false,
         sentAt: new Date().toLocaleString(),
-        isStared:true,
+        isStared: true,
         isDraft: false,
+
 
     },
     {
@@ -120,8 +159,9 @@ var starterEmails = [
         isRead: true,
         isMarked: true,
         sentAt: new Date().toLocaleString(),
-        isStared:false,
+        isStared: false,
         isDraft: true,
+
 
     },
     {
@@ -134,8 +174,9 @@ var starterEmails = [
         isRead: true,
         isMarked: false,
         sentAt: new Date().toLocaleString(),
-        isStared:true,
+        isStared: true,
         isDraft: false,
+
 
     },
     {
@@ -148,8 +189,9 @@ var starterEmails = [
         isRead: false,
         isMarked: false,
         sentAt: new Date().toLocaleString(),
-        isStared:false,
+        isStared: false,
         isDraft: true,
+
 
     },
     {
@@ -162,8 +204,9 @@ var starterEmails = [
         isRead: false,
         isMarked: false,
         sentAt: new Date().toLocaleString(),
-        isStared:false,
+        isStared: false,
         isDraft: true,
+
 
     },
     {
@@ -176,8 +219,9 @@ var starterEmails = [
         isRead: true,
         isMarked: false,
         sentAt: new Date().toLocaleString(),
-        isStared:true,
+        isStared: true,
         isDraft: false,
+
 
     },
     {
@@ -190,9 +234,8 @@ var starterEmails = [
         isRead: false,
         isMarked: false,
         sentAt: new Date().toLocaleString(),
-        isStared:false,
+        isStared: false,
         isDraft: false,
-
     },
 
 ]

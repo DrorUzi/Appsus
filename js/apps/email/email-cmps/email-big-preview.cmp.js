@@ -1,4 +1,5 @@
 import emailService from "../email-services/email-service.js";
+import { eventBus } from "../../../main-services/eventbus-service.js";
 
 export default {
     props:['email'],
@@ -25,6 +26,10 @@ export default {
     methods:{
         onDeleteEmail(id){
             emailService.deleteEmail(id)
+            .then(()=>{
+                eventBus.$emit('delete')
+            })
+            
         }
     }
     
