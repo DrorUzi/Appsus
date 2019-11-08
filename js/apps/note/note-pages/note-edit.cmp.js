@@ -40,7 +40,6 @@ export default {
             <button type="button" @click="onDeleteNote" class="edit-add-btn">Delete</button>
             </div>
         </form>
-        {{this.note}}
     </section>
     `,
     data() {

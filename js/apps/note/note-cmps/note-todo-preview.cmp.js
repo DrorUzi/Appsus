@@ -7,12 +7,12 @@ export default {
     template: `
     <div class="note-preview">
         <h2>Title: {{note.title}}</h2>
-        <ul>
+        <ul class="todo-list">
             <li v-for="todo in note.todos" :key="todo.todoId" :class="isDone(todo)" @click="markAsDone(todo.todoId)">
                 {{todo.txt}}
             </li>
         </ul>
-        <router-link class="edit-link add-btn" :to="'/note/edit/'+note.id">edit</router-link>
+        <router-link class="edit-link" :to="'/note/edit/'+note.id">edit</router-link>
     </div>
     `,
     data() {
@@ -27,7 +27,6 @@ export default {
         markAsDone(todoId){
             let currTodo = noteService.findTodoById(todoId,this.note.todos)
             currTodo.isDone = !currTodo.isDone;
-            console.log(currTodo);            
         }
 
     },
