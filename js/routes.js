@@ -38,7 +38,7 @@ const myRoutes = [
                 component: details
             }, 
             {
-                path: 'compose',
+                path: 'compose/:id?',
                 component: compose
             },
             {

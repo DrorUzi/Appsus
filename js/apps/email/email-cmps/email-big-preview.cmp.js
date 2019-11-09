@@ -13,16 +13,27 @@ export default {
                     <span><{{email.sentFrom}}></span>
                 </div>
                 <div class="preview-icons">
-                <img @click="onDeleteEmail(email.id)" src="../../../img/email/delete.png">
-                <router-link :to="'/email/details/'+email.id">
-                <img src="../../../../img/email/fulldetails.png">
-                </router-link>
+                    <img @click="onSaveNote(email)" src="../../../img/email/note.png">
+                    <img @click="onDeleteEmail(email.id)" src="../../../img/email/delete.png">
+                    <img @click="onEditMail(email.id)" title="Edit" src="../../../../img/email/edit.png">
+                    <router-link :to="'/email/details/'+email.id">
+                    <img src="../../../../img/email/fulldetails.png">
+                    </router-link>
                 </div>
             </div>
-            <p>{{email.body}}</p>
+            <p>{{body}}</p>
     </div>
     </section>
     `,
+    data(){
+        return{
+            note:{
+                subject: '',
+                body: ''
+            },
+            body : this.email.body.substring(0, 100) + '...'
+        }
+    },
     methods:{
         onDeleteEmail(id){
             emailService.deleteEmail(id)
@@ -30,9 +41,17 @@ export default {
                 eventBus.$emit('delete')
             })
             
+        },
+        onEditMail(emailId){
+            this.$router.push(`/email/compose/${emailId}`)
+        },
+        onSaveNote(email){
+            console.log('email',email);
+            this.note.subject = email.subject;
+            this.note.body = email.body
+            eventBus.$emit('saveAsNote',this.note)
         }
     }
-    
- 
+
 }
 
