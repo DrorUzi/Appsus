@@ -26,21 +26,37 @@ export default {
             noteService.saveNotesToStorage()
         },
 
+        getTodoAsTxt(todos) {            
+            var todosStr = todos.map(todo => {
+               return todo.txt + '\n'
+            })            
+            return todosStr
+        },
+
         sendAsEmail() {
             Swal.fire({
                 title: 'Do you want to send by Email?',
-                text:'You will be redirected to another page',
+                text: 'You will be redirected to another page',
                 showCancelButton: true,
                 confirmButtonColor: '#d33',
                 cancelButtonColor: '#3085d6',
                 confirmButtonText: 'Yes'
             }).then((result) => {
                 if (result.value) {
-                    var emailDraft;
-                   if(this.currNote.type==='txt'){
-                    emailDraft.txt = this.currNote.data
-                   }
-
+                    var emailMsg = {
+                        title: '',
+                        txt: ''
+                    }
+                    if (this.currNote.type === 'txt') {
+                        emailMsg.txt = this.currNote.data
+                    }
+                    else if (this.currNote.type === 'img') {
+                        emailMsg.txt = 'Check out that image! : ' + this.currNote.data
+                    }
+                    else emailMsg.txt = 'Todos : ' + this.getTodoAsTxt(this.currNote.todos)
+                    emailMsg.title = this.currNote.title 
+                    eventBus.$emit('sendAsEmail',emailMsg)
+                    this.$router.push(`email/compose/`)
                 }
             })
         }
