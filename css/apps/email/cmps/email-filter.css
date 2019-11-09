@@ -34,7 +34,7 @@
     background-color: rgba(255, 255, 255, 0);
     margin: 0;
     padding: 10px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     outline: none;
 }
 .sort-container{
@@ -50,7 +50,7 @@
 .sort-container span{
     font-weight: 400;
     padding: 10px;
-    font-size: 1rem;
+    font-size: 1.3rem;
     cursor: pointer;
     
 }
@@ -59,6 +59,7 @@
     font-weight: 400;
     padding: 10px;
     cursor:default;
+    font-size: 1.3rem ;
 }
 .sort-container span{
     margin-right: 10px;
@@ -79,7 +80,7 @@
     border-radius: 20px;
     width: 10rem;
     height: 2.5rem;
-    padding: 10px;
+    padding: 3px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -87,7 +88,7 @@
     cursor: pointer;
 }
 .compose-btn span{
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
 .compose-btn:hover {
@@ -95,6 +96,7 @@
 }
 
 .compose-btn img {
+    margin-top:5px;
     width: 1.5rem;
     height: 1.5rem;
 }

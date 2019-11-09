@@ -63,8 +63,11 @@ export default {
             })
         }
         eventBus.$on('sendAsEmail',(email)=> {
-            this.email = email
+            console.log('note', email);
+            this.email.subject = email.title
+            this.email.body = email.txt
         })
-    }
+    },
+  
 }
 
