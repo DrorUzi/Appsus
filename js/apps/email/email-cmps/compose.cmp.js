@@ -26,9 +26,9 @@ export default {
             </form>
     </section>
     `,
-    data(){
+    data() {
         return {
-            email : {
+            email: {
                 subject: '',
                 name: '',
                 body: '',
@@ -37,34 +37,39 @@ export default {
                 isRead: false,
                 isMarked: false,
                 sentAt: new Date().toLocaleString(),
-                isStared:false,
-                isDeleted:false,
+                isStared: false,
+                isDeleted: false,
                 isSent: true
             }
         }
     },
     methods: {
         submitForm() {
-            eventBus.$emit('newMail', JSON.parse(JSON.stringify(this.email)) )
+            eventBus.$emit('newMail', JSON.parse(JSON.stringify(this.email)))
             this.$router.push('/email/list')
         },
-        saveDraft(){
-            eventBus.$emit('newDraft', JSON.parse(JSON.stringify(this.email)) )
+        saveDraft() {
+            eventBus.$emit('newDraft', JSON.parse(JSON.stringify(this.email)))
             this.$router.push('/email/draft')
+        },
+        noteToMail(note) {
+            this.email.subject = note.title
+            this.email.body = note.txt
         }
     },
-    created(){
+    mounted() {
+    },
+    created() {
         const emailId = this.$route.params.id;
         if (emailId) {
             emailService.findEmailById(emailId)
-            .then(email => {
-                this.email = email
-                this.email.subject = 'Re: ' + this.email.subject
-            })
+                .then(email => {
+                    this.email = email
+                    this.email.subject = 'Re: ' + this.email.subject
+                })
         }
-        eventBus.$on('sendAsEmail',(email)=> {
-            this.email = email
-        })
+        eventBus.$on('sendAsEmail', this.noteToMail)
+
     }
 }
 
