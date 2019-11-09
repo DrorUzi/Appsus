@@ -171,27 +171,4 @@ export default {
             this.$refs.titleInput.focus()
         }
     }
-
 }
-
-
-
-// if (!this.note.todos) {
-//     this.note.todos = []
-//     this.note.todos.push(this.todos)
-// }
-
-// addTodo() {
-//     this.todos.txt= this.note.data
-//     this.todos.todoId = utilsService.makeId()
-//     console.log(this.todos);
-
-//     this.note.data = ''
-//     if (!this.note.todos) {
-//         this.note.todos = []
-//         this.note.todos.push(this.todos)
-//     }
-//     else this.note.todos.push(this.todos)
-//     this.todos.txt = ''
-//     this.todos.todoId =''
-// },

@@ -110,6 +110,14 @@
     cursor: pointer;
 }
 
+.preview-icon{
+    color: rgba(53, 53, 53, 0.493);
+    font-size: 1.4rem;
+    transition: opacity .2s ease-in-out;
+}
+
+
+
 .icon-clicked {
     color: black;
 }
@@ -117,6 +125,11 @@
 .fas:hover {
     color: rgb(136, 136, 136);
     cursor: pointer;
+}
+
+.preview-icon:hover{
+    color: rgb(44, 44, 44);
+
 }
 
 .fas:active {

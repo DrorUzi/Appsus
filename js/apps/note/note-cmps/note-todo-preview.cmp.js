@@ -1,28 +1,33 @@
 'use strict';
 import { noteService } from '../note-services/note-service.js';
+import previewTopPanel from '../note-cmps/note-top-panel.cmp.js';
+import previewBottomPanel from '../note-cmps/note-bottom-panel.cmp.js';
 
 
 export default {
     props: ['note'],
     template: `
-    <div class="note-preview">
-        <h2>Title: {{note.title}}</h2>
+    <div class="note-preview" @mouseenter="togglePanel(true)" @mouseleave="togglePanel(false)">
+        <preview-top-panel :currNote="note" :isMouseIn ="isMouseIn"></preview-top-panel>
         <ul class="todo-list">
             <li v-for="todo in note.todos" :key="todo.todoId" :class="isDone(todo)" @click="markAsDone(todo.todoId)">
                 {{todo.txt}}
             </li>
         </ul>
-        <router-link class="edit-link" :to="'/note/edit/'+note.id">edit</router-link>
+        <preview-bottom-panel :currNote="note" :isMouseIn ="isMouseIn"></preview-bottom-panel>
     </div>
     `,
     data() {
         return {
-
+            isMouseIn: false,
         }
     },
     methods: {
         isDone(todo) {
             return (todo.isDone)? 'done-todo' : ''
+        },
+        togglePanel(isMouseIn) {            
+            this.isMouseIn = isMouseIn
         },
         markAsDone(todoId){
             let currTodo = noteService.findTodoById(todoId,this.note.todos)
@@ -36,5 +41,9 @@ export default {
     },
     created() {
 
+    },
+    components:{
+        previewTopPanel,
+        previewBottomPanel,
     }
 }

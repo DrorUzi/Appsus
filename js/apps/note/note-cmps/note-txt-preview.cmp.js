@@ -1,21 +1,29 @@
 'use strict';
 
+import previewTopPanel from '../note-cmps/note-top-panel.cmp.js';
+import previewBottomPanel from '../note-cmps/note-bottom-panel.cmp.js';
+
+
+
 export default {
     props: ['note'],
     template: `
-    <div class="note-preview">
-        <h3>Title: {{note.title}}</h3>
+    <div class="note-preview" @mouseenter="togglePanel(true)" @mouseleave="togglePanel(false)">
+        <preview-top-panel :currNote="note" :isMouseIn ="isMouseIn"></preview-top-panel>
         <p>{{note.data}}</p>
-        <router-link class="edit-link" :to="'/note/edit/'+note.id">edit</router-link>
+        <preview-bottom-panel :currNote="note" :isMouseIn ="isMouseIn"></preview-bottom-panel>
     </div>
     `,
     data() {
         return {
+            isMouseIn: false,
             
         }
     },
     methods:{
-
+        togglePanel(isMouseIn) {
+            this.isMouseIn = isMouseIn
+        },
 
     },
     computed: {
@@ -24,5 +32,11 @@ export default {
     },
     created() {
 
+    },
+    components:{
+        previewTopPanel,
+        previewBottomPanel,
     }
 }
+
+

@@ -3,6 +3,13 @@ import { noteService } from '../note-services/note-service.js';
 import noteList from '../note-cmps/note-list.cmp.js';
 import noteFilter from '../note-cmps/note-filter.cmp.js';
 
+// bugs for sunday:
+        //bug with checkbox/input hack, if checkbox not visable dosent work! both color and pin 
+        // =====================================
+        //need to find a way to introduce the new notes to vue (observer)
+        //todo preview works properly only after refresh
+
+
 export default {
   template: `
     <section class="keep-app">

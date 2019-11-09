@@ -7,6 +7,7 @@ export const noteService = {
     saveNote,
     deleteNote,
     findTodoById,
+    saveNotesToStorage
 }
 
 const NOTES_KEY = 'notes'
@@ -116,6 +117,10 @@ function _loadGNotes() {
     else {
         gNotes = utilsService.loadFromStorage(NOTES_KEY)
     }
+}
+
+function saveNotesToStorage(){
+    utilsService.saveToStorage(NOTES_KEY, gNotes)
 }
 
 function getNotes() {
