@@ -8,12 +8,14 @@ import { eventBus } from '../../../main-services/eventbus-service.js'
 
 export default {
   template: `
-    <section class="email-app container" >
-        <email-filter @sort="setSort" @filtered="setFilter"></email-filter>
-        <div class="main-info">
-          <side-bar :unRead="unRead"></side-bar>
-            <router-view></router-view>
-        </div>
+    <section class="email-backgroung">
+      <div class="email-app container">
+          <email-filter @sort="setSort" @filtered="setFilter"></email-filter>
+          <div class="main-info">
+            <side-bar :unRead="unRead"></side-bar>
+              <router-view></router-view>
+          </div>
+      </div>
     </section>
     `,
   data() {

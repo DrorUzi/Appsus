@@ -1,3 +1,6 @@
+@import "./fonts.css";
 @import "./apps/note/note-main.css";
 @import "./apps/email/email-main.css";
-@import "./base.css"
+@import "./base.css";
+@import "./main-nav-bar.css";
+@import "./home-page.css";

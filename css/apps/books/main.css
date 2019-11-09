@@ -291,9 +291,9 @@ a {
     font-size: 1.5rem;
 }
 
-.router-link-active {
+/* .router-link-active {
     color: lightcoral;
-}
+} */
 
 .footer {
     height: 5rem;

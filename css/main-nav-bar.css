@@ -1,0 +1,21 @@
+.home-main-header {
+    height: 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid lightcoral;
+    font-size: 2rem;
+    font-family: openSans;
+    background-color: #f4e8e8;
+
+}
+
+.main-nav-bar {
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-main-header img{
+    width: 10rem;
+}
