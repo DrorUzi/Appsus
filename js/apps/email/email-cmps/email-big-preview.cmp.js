@@ -13,10 +13,10 @@ export default {
                     <span><{{email.sentFrom}}></span>
                 </div>
                 <div class="preview-icons">
-                    <img @click="onSaveNote(email)" src="../../../img/email/note.png">
-                    <img @click="onDeleteEmail(email.id)" src="../../../img/email/delete.png">
-                    <img @click="onEditMail(email.id)" title="Edit" src="../../../../img/email/edit.png">
-                    <router-link :to="'/email/details/'+email.id">
+                    <img @click="onSaveNote(email)" title="Save as note" src="../../../img/email/note.png">
+                    <img @click="onDeleteEmail(email.id)" title="Delete" src="../../../img/email/delete.png">
+                    <img @click="onEditMail(email.id)"  title="Edit" src="../../../../img/email/edit.png">
+                    <router-link title="See full email" :to="'/email/details/'+email.id">
                     <img src="../../../../img/email/fulldetails.png">
                     </router-link>
                 </div>
@@ -36,23 +36,46 @@ export default {
     },
     methods:{
         onDeleteEmail(id){
-            emailService.deleteEmail(id)
-            .then(()=>{
-                eventBus.$emit('delete')
+            Swal.fire({
+                title: 'Are you sure you want to delete the email?',
+                text: 'You will be able to see it on the deleted emails',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+             if(result.value){
+                emailService.deleteEmail(id)
+                .then(()=>{
+                    eventBus.$emit('delete')
+                })
+             }
             })
-            
+
         },
         onEditMail(emailId){
             this.$router.push(`/email/compose/${emailId}`)
         },
         onSaveNote(email){
-            console.log('email',email);
-            this.note.subject = email.subject;
-            this.note.body = email.body
-            eventBus.$emit('saveAsNote',this.note)
-            this.$router.push('/note')
+            Swal.fire({
+                title: 'Do you want to save it as a note?',
+                text: 'You will be redirected to another page',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes'
+            }).then((result) => {
+             if(result.value){
+                this.note.subject = email.subject;
+                this.note.body = email.body
+                eventBus.$emit('saveAsNote',this.note)
+                this.$router.push('/note')
+             }
+            })
+         
         }
     }
 
+   
 }
 
