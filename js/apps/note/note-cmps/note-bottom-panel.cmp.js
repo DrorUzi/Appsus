@@ -1,5 +1,7 @@
 'use strict';
 import { noteService } from '../note-services/note-service.js';
+import { eventBus } from "../../../main-services/eventbus-service.js"
+
 export default {
     props: ['currNote', 'isMouseIn'],
     template: `
@@ -34,7 +36,10 @@ export default {
                 confirmButtonText: 'Yes'
             }).then((result) => {
                 if (result.value) {
-                    console.log('pp')
+                    var emailDraft;
+                   if(this.currNote.type==='txt'){
+                    emailDraft.txt = this.currNote.data
+                   }
 
                 }
             })

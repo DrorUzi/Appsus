@@ -32,6 +32,8 @@ export default {
       this.filterBy = filterBy
     },
     saveAsNote(mail) {
+      console.log('maillllllll',mail);
+      
       var note = {
         title: mail.subject,
         data: mail.body,
@@ -57,7 +59,10 @@ export default {
 
   },
   created() {
-    eventBus.$on('saveAsNote',saveAsNote),
+    eventBus.$on('saveAsNote',(mail)=>{
+      console.log('logloglog',mail);
+      
+    }),
     noteService.getNotes()
       .then(notes => this.notes = notes)
   },
