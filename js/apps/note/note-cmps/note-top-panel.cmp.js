@@ -5,7 +5,7 @@ export default {
     props: ['currNote', 'isMouseIn'],
     template: `
     <div class="title-panel">
-            <h2 class="title">Title: {{currNote.title}}</h2>
+            <h2 class="title">{{currNote.title}}</h2>
             <div>
                 <label for="preview-pin"><i class="fas fa-thumbtack preview-icon" :class="[{'icon-clicked':currNote.isPinned} ,hidden]"></i></label>
                 <input @change="saveChanges" id="preview-pin" class="checkbox-hide" type="checkbox" v-model="currNote.isPinned">

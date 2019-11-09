@@ -7,17 +7,21 @@ export default {
     props: ['notes'],
     template: `
     <section class="">
-        <router-view></router-view>
+        <transition name="slide-fade">
+            <router-view></router-view>
+        </transition>
         <section>
-        <p>pinned</p>
-            <section class="note-list pinned">
-                <component v-if="currNote.isPinned" class="list-item" 
-                :class="currNote.type" 
-                :key="currNote.id"
-                :style="{backgroundColor:currNote.bcgColor}"
-                v-for="currNote in notes" 
-                :is="currNote.type+'Preview'" :note="currNote"></component>
-            </section>
+            <fieldset class="pinned-fieldset">
+            <legend>Pinned</legend>
+                <section class="note-list pinned">
+                        <component v-if="currNote.isPinned" class="list-item" 
+                        :class="currNote.type" 
+                        :key="currNote.id"
+                        :style="{backgroundColor:currNote.bcgColor}"
+                        v-for="currNote in notes" 
+                        :is="currNote.type+'Preview'" :note="currNote"></component>
+                    </section>
+            </fieldset>
             <section class="note-list">
                 <component v-if="!currNote.isPinned" class="list-item" 
                 :class="currNote.type" 
