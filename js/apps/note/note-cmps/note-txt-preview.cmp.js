@@ -4,9 +4,9 @@ export default {
     props: ['note'],
     template: `
     <div class="note-preview">
-        <h2>Title: {{note.title}}</h2>
-        <h3>{{note.data}}</h3>
-        <router-link class="edit-link add-btn" :to="'/note/edit/'+note.id">edit</router-link>
+        <h3>Title: {{note.title}}</h3>
+        <p>{{note.data}}</p>
+        <router-link class="edit-link" :to="'/note/edit/'+note.id">edit</router-link>
     </div>
     `,
     data() {

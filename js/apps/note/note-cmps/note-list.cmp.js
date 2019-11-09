@@ -8,21 +8,36 @@ export default {
     template: `
     <section class="">
         <router-view></router-view>
-        <section class="note-list">
-            <component class="list-item" :class="currNote.type" :key="currNote.id"
-            v-for="currNote in notes" :is="currNote.type+'Preview'" :note="currNote"></component>
+        <section>
+        <p>pinned</p>
+            <section class="note-list pinned">
+                <component v-if="currNote.isPinned" class="list-item" 
+                :class="currNote.type" 
+                :key="currNote.id"
+                :style="{backgroundColor:currNote.bcgColor}"
+                v-for="currNote in notes" 
+                :is="currNote.type+'Preview'" :note="currNote"></component>
+            </section>
+            <section class="note-list">
+                <component v-if="!currNote.isPinned" class="list-item" 
+                :class="currNote.type" 
+                :key="currNote.id"
+                :style="{backgroundColor:currNote.bcgColor}"
+                v-for="currNote in notes" 
+                :is="currNote.type+'Preview'" :note="currNote"></component>
+            </section>
         </section>
     </section>
     `,
     data() {
         return {
-            currNoteId: null,
-            isEditing: false,
+            //wanna try to change note bcg color opacity only^^^^^^^
         }
     },
     methods: {
     },
     computed: {
+
     },
     created() {
 

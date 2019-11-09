@@ -1,18 +1,38 @@
-.note-preview{
+.note-preview {
     border: 1px solid black;
     padding: 10px;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.2rem;
     height: 100%;
     width: 100%;
 }
 
-.note-preview-img{
+.note-preview-img {
     width: 100%;
+}
+
+.note-preview p {
+    margin: 0;
+}
+
+.note-preview ul {
+    margin: 0;
 }
 
 .note-list a {
     text-decoration: none;
     color: black;
+}
+
+.edit-link {
+    background-color: transparent !important;
+    border-radius: 0 30px 30px 0;
+    border: 1px solid black;
+}
+
+.todo-list li{
+    cursor: pointer;
 }

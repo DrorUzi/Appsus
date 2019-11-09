@@ -67,7 +67,8 @@ var defaultNotes = [
         data: 'https://imgcomfort.com/Userfiles/Upload/images/illustration-geiranger.jpg',
         isPinned: false,
         type: 'img',
-        editedAt: 'today'
+        editedAt: 'today',
+        bcgColor:''
     },
     {
         id: utilsService.makeId(),
@@ -75,7 +76,8 @@ var defaultNotes = [
         data: 'lala',
         isPinned: false,
         type: 'txt',
-        editedAt: 'today'
+        editedAt: 'today',
+        bcgColor:''
     },
     {
         id: utilsService.makeId(),
@@ -100,7 +102,8 @@ var defaultNotes = [
         ],
         isPinned: true,
         type: 'todo',
-        editedAt: 'today'
+        editedAt: 'today',
+        bcgColor:''
     },
 ]
 _loadGNotes()

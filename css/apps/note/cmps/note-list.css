@@ -28,3 +28,8 @@
     grid-column: span 3;
     grid-row: span 3;
 }
+
+.pinned{
+    padding: 20px;
+    border: 1px solid black;
+}

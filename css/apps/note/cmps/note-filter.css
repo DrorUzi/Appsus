@@ -1,0 +1,24 @@
+.note-filter {}
+
+.note-filter-input {
+    border: 1px solid lightcoral;
+    background-color: rgba(255, 220, 220, 0.514);
+    border-radius: 10px;
+    min-height: 25px;
+    outline: none;
+}
+
+.filter-select {
+    border: 1px solid #F08080;
+    background-color: rgba(255, 220, 220, 0.527);
+    color: black;
+    outline: none;
+    min-height: 25px;
+    border-radius: 10px;
+}
+
+.filter-select option {
+    background-color: rgba(240, 128, 128, 0.178);
+    border:1px solid lightcoral; /* lo oved :x*/
+    color: rgb(0, 0, 0);
+}
