@@ -15,7 +15,8 @@ export default {
                 </div>
                 <div class="date-preview">
                     <h4>{{email.sentAt}}</h4>
-                    <img class="read-envelope-img" :src="checkIfRead">
+                    <img title="Change reading status"class="read-envelope-img" :src="checkIfRead">
+                  
                 </div>
             </div>
            <email-big-preview :email="email" :class="{hidden : !isClicked}"></email-big-preview>
@@ -23,7 +24,8 @@ export default {
     `,
     data() {
         return {
-            isClicked: false
+            isClicked: false,
+           
         }
     },
     methods: {
@@ -32,6 +34,7 @@ export default {
             this.isClicked = !this.isClicked
             if(!email.isRead) eventBus.$emit('read', (emailId))
         },
+       
     },
     computed: {
         checkIfRead() {

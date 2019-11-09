@@ -1,9 +1,10 @@
+import { eventBus } from "../../../main-services/eventbus-service.js"
 
 export default {
     template: `
-        <div class="email-filter">
-        <router-link to="/email/compose"  >
-            <div class="compose-btn">
+        <div   :class="{hidden : isClosed}" class="email-filter">
+        <router-link  to="/email/compose"  >
+            <div @click="onCloseFilter" class="compose-btn">
                 <img src="../../../img/email/compose.png">
                 <span>COMPOSE</span>
             </div>
@@ -31,7 +32,8 @@ export default {
             filterBy: {
                 title: '',
                 read: ''
-            }
+            },
+            isClosed : false
         }
     },
     methods: {
@@ -40,6 +42,14 @@ export default {
         },
         setSort(sortBy){
             this.$emit('sort',sortBy)
+        },
+        onCloseFilter(){
+            this.isClosed = true
         }
+    },
+    created(){
+        eventBus.$on('openFilter',()=>{
+            this.isClosed = false
+        })
     }
 }

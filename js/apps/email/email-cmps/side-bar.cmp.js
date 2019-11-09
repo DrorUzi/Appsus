@@ -1,11 +1,11 @@
+import { eventBus } from "../../../main-services/eventbus-service.js";
 
 
 export default {
     props:['unRead'],
     template: `
     <section class="side-bar"> 
-        
-        <div class="side-bar-options">
+        <div @click="openFilter" class="side-bar-options">
             <router-link class="opt" to="/email/list">
                 <img src="../../../img/email/inbox.png">
                 <h4>Inbox</h4>
@@ -23,12 +23,17 @@ export default {
                     <h4>Drafts</h4>
                 </router-link>
                 <router-link class="opt" to="/email/deleted">
-                    <img src="../../../img/email/delete.png">
+                    <img class=" delete" src="../../../img/email/delete.png">
                     <h4>Deleted</h4>
                 </router-link>
                 <h4 class="unread">You have {{unRead}} unread emails </h4>
             </div>
     </section>
-    `,   
+    `,
+    methods:{
+        openFilter(){
+            eventBus.$emit('openFilter')
+        }
+    }
 }
 

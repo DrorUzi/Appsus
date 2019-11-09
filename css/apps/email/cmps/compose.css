@@ -3,6 +3,8 @@
     width: 70%;
     border: 1px solid lightcoral;
     border-radius: 5px;
+    margin-top:2rem;
+    background-color: rgba(255, 255, 255, 0.479);
 }
 
 .compose-header{
@@ -36,7 +38,7 @@ input[type=text].input-name {
 }
 
 .compose-form textarea{
-    height: 60%;
+    height: 57%;
     border: none;
     resize: none;
 }
@@ -86,4 +88,7 @@ input[type=text].input-name {
     align-items: center;
     margin-right: 10px;
     outline: none;
+}
+.preview-icons img{
+    margin: 5px;
 }

@@ -23,7 +23,8 @@ export default {
       emails: [],
       unRead: null,
       filterBy: null,
-      sortBy: []
+      sortBy: [],
+     
     }
   },
   methods: {
@@ -36,6 +37,7 @@ export default {
       eventBus.$emit('sortedEmails', this.sort)
 
     },
+
   },
   computed: {
     newEmailsToShow() {
@@ -65,7 +67,8 @@ export default {
         })
         return sortedByDate
       }
-    }
+    },
+   
   },
   components: {
     emailList,
@@ -95,6 +98,7 @@ export default {
           eventBus.$emit('deletedMails', this.emails)
         })
     })
+   
   },
   mounted() {
     emailService.getUnreadMails()

@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: space-between;
     height: 40%;
-    padding-top: 20px;
 }
 
 
@@ -27,6 +26,8 @@
     align-items: center;
     width: 70%;
 }
+
+
 
 .opt:hover {
     background-color: rgb(216, 214, 214);
@@ -54,7 +55,11 @@
     background-color: rgba(255, 0, 0, 0.315);
     border-radius: 0 30px 30px 0;
 } */
-.router-link-active:hover {
+/* .router-link-active:hover {
     background-color: rgba(255, 0, 0, 0.315);
     border-radius: 0 30px 30px 0;
+} */
+
+.delete{
+   padding: 4px;
 }

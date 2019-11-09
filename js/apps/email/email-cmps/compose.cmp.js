@@ -1,11 +1,13 @@
 import { eventBus } from "../../../main-services/eventbus-service.js"
-
+import emailService from "../email-services/email-service.js"
 
 
 export default {
     template: `
     <section class="compose"> 
-        <div class="compose-header"><h1>New Message</h1></div>
+        <div class="compose-header">
+            <h1>New Message</h1>
+        </div>
         <form class="compose-form" @submit.prevent="submitForm">
             <input class="compose-input" ref="inputName" type="text"
                  placeholder="Name" v-model="email.name" />
@@ -18,11 +20,10 @@ export default {
                 <textarea class="compose-input" placeholder="body" v-model="email.body">
                 </textarea>
                 <div class="compose-btn-container">
-                <button type="submit" class="send-btn"><img src="../../../../img/email/send2.png">Send</button>
-                <button type="button" @click="saveDraft" class="draft-btn">Save as draft</button>
-</div>
-         </form>
-
+                    <button type="submit" class="send-btn"><img src="../../../../img/email/send2.png">Send</button>
+                    <button type="button" @click="saveDraft" class="draft-btn">Save as draft</button>
+                </div>
+            </form>
     </section>
     `,
     data(){
@@ -51,6 +52,19 @@ export default {
             eventBus.$emit('newDraft', JSON.parse(JSON.stringify(this.email)) )
             this.$router.push('/email/draft')
         }
+    },
+    created(){
+        const emailId = this.$route.params.id;
+        if (emailId) {
+            emailService.findEmailById(emailId)
+            .then(email => {
+                this.email = email
+                this.email.subject = 'Re: ' + this.email.subject
+            })
+        }
+        eventBus.$on('sendAsEmail',(email)=> {
+            this.email = email
+        })
     }
 }
 
