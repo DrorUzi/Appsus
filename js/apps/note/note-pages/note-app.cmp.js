@@ -59,10 +59,7 @@ export default {
 
   },
   created() {
-    eventBus.$on('saveAsNote',(mail)=>{
-      console.log('logloglog',mail);
-      
-    }),
+    eventBus.$on('saveAsNote',this.saveAsNote)
     noteService.getNotes()
       .then(notes => this.notes = notes)
   },

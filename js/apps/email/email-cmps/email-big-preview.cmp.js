@@ -50,6 +50,7 @@ export default {
             this.note.subject = email.subject;
             this.note.body = email.body
             eventBus.$emit('saveAsNote',this.note)
+            this.$router.push('/note')
         }
     }
 
