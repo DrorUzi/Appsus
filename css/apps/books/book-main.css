@@ -1,14 +1,11 @@
 @import './home-page.css';
-* {
-    box-sizing: border-box;
-}
 
 @font-face {
     font-family: openSans;
     src: url('/font/OpenSansCondensed-Light.ttf');
 }
 
-body {
+.book-app{
     margin: 0;
     background-image: url('../img/bcg3.jpg');
     font-family: openSans;

@@ -6,6 +6,8 @@
     justify-content: space-around;
     padding: 30px;
     flex-direction: column;
+    font-family: openSans;
+
 }
 
 .main-info{

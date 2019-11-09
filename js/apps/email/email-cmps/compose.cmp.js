@@ -69,7 +69,6 @@ export default {
                 })
         }
         eventBus.$on('sendAsEmail', this.noteToMail)
-
     }
 }
 
