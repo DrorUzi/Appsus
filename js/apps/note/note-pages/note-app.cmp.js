@@ -57,7 +57,7 @@ export default {
 
   },
   created() {
-    eventBus.$on('saveAsNote',saveAsNote),
+    eventBus.$on('saveAsNote',this.saveAsNote)
     noteService.getNotes()
       .then(notes => this.notes = notes)
   },

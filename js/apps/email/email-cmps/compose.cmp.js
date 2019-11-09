@@ -9,14 +9,14 @@ export default {
             <h1>New Message</h1>
         </div>
         <form class="compose-form" @submit.prevent="submitForm">
-            <input class="compose-input" ref="inputName" type="text"
+                <input class="compose-input" ref="inputName" type="text"
                  placeholder="Name" v-model="email.name" />
-             <input class="compose-input" ref="inputName" type="text"
-                placeholder="Subject" v-model="email.subject" required />
+                <input class="compose-input" ref="inputName" type="text"
+                 placeholder="Subject" v-model="email.subject" required />
                 <input class="compose-input" type="email" placeholder="Enter your email"
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required  v-model="email.sentFrom">
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required  v-model="email.sentFrom">
                 <input class="compose-input" type="email" placeholder="Send to" 
-                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required v-model="email.sentTo">
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  required v-model="email.sentTo">
                 <textarea class="compose-input" placeholder="body" v-model="email.body">
                 </textarea>
                 <div class="compose-btn-container">
