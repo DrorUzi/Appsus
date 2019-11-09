@@ -71,6 +71,13 @@ export default {
                         this.noteId = idParam
                         this.note = note
                     })
+                    .catch(err => {
+                        const msg = {
+                            txt: `Error occured : (${err})`,
+                            type: 'error'
+                        }
+                        eventBus.$emit('show-msg', msg);
+                    })
             }
             else {
                 this.noteId = ''
@@ -85,9 +92,11 @@ export default {
             }
         },
         onSaveNote() {
+            if ((!this.note.data) && (!this.note.title) && (!this.note.todos)) {
+                return Swal.fire('Please fill ANYTHING')
+            }
             this.note.editedAt = new Date().toLocaleString()
             noteService.saveNote(this.note, this.noteId)
-                //add succsses msg
                 .then(() => {
                     this.note = {
                         title: '',
@@ -98,6 +107,18 @@ export default {
                         bcgColor: ''
                     }
                     this.$router.push('/note');
+                    const msg = {
+                        txt: `Note added Successfully`,
+                        type: 'success'
+                    }
+                    eventBus.$emit('show-msg', msg);
+                })
+                .catch(err => {
+                    const msg = {
+                        txt: `Note not saved : (${err})`,
+                        type: 'error'
+                    }
+                    eventBus.$emit('show-msg', msg);
                 })
         },
         onDeleteNote() {
@@ -112,10 +133,21 @@ export default {
                 if (result.value) {
                     if (this.note.editedAt) {
                         noteService.deleteNote(this.noteId)
-                            .then(msg => console.log(msg)
-                            )
+                            .then(msg => {
+                                const userMsg = {
+                                    txt: msg,
+                                    type: 'success'
+                                }
+                                eventBus.$emit('show-msg', userMsg)
+                            })
+                            .catch(err => {
+                                const msg = {
+                                    txt: `Note not deleted : (${err})`,
+                                    type: 'error'
+                                }
+                                eventBus.$emit('show-msg', msg);
+                            })
                     }
-
                     this.$router.push('/note');
                 }
             })
@@ -168,7 +200,7 @@ export default {
     watch: {
         '$route.params.id'() {
             this.loadNote();
-            this.$refs.titleInput.focus()
+            if (this.$refs) this.$refs.titleInput.focus()
         }
     }
 }

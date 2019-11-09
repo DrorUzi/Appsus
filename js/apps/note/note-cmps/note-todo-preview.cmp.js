@@ -8,6 +8,7 @@ export default {
     props: ['note'],
     template: `
     <div class="note-preview" @mouseenter="togglePanel(true)" @mouseleave="togglePanel(false)">
+        <img class="pin-img" src="img/pin.png">
         <preview-top-panel :currNote="note" :isMouseIn ="isMouseIn"></preview-top-panel>
         <ul class="todo-list">
             <li v-for="todo in note.todos" :key="todo.todoId" :class="isDone(todo)" @click="markAsDone(todo.todoId)">

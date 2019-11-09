@@ -8,7 +8,6 @@ new Vue({
     el: '#appsus',
     template: `
         <div>
-            <main-header></main-header>
             <router-view></router-view>
         </div>
     `,

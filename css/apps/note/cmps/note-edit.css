@@ -10,6 +10,17 @@
     align-items: center;
     border-radius: 20px;
 }
+@media (max-width: 950px) {
+    .note-edit {
+        width: 90%;
+    }
+}
+@media (max-width: 950px) {
+    .note-edit {
+        width: 90%;
+        flex-direction: column;
+    }
+}
 
 .edit-title-input {
     border: none;
@@ -23,7 +34,6 @@
     margin-bottom: 10px;
 }
 
-
 .note-edit textarea {
     border: 1px solid lightcoral;
     background-color: rgba(255, 220, 220, 0.5);
@@ -33,7 +43,6 @@
     outline: none;
     resize: none;
     width: 227px;
-
 }
 
 .url-input {
@@ -44,7 +53,6 @@
     min-height: 25px;
     outline: none;
     width: 227px;
-
 }
 
 .edit-inputs {
@@ -73,7 +81,6 @@
 
 .edit-add-btn:hover {
     background-color: rgba(207, 172, 172, 0.548);
-
 }
 
 .add-todo-btn {
@@ -110,13 +117,11 @@
     cursor: pointer;
 }
 
-.preview-icon{
+.preview-icon {
     color: rgba(53, 53, 53, 0.493);
     font-size: 1.4rem;
     transition: opacity .2s ease-in-out;
 }
-
-
 
 .icon-clicked {
     color: black;
@@ -127,9 +132,8 @@
     cursor: pointer;
 }
 
-.preview-icon:hover{
+.preview-icon:hover {
     color: rgb(44, 44, 44);
-
 }
 
 .fas:active {
@@ -143,6 +147,8 @@
 .slide-fade-enter-active, .slide-fade-leave-active {
     transition: opacity .5s;
 }
-.slide-fade-enter, .slide-fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.slide-fade-enter, .slide-fade-leave-to
+    {
     opacity: 0;
 }

@@ -3,9 +3,9 @@ body{
 }
 .add-note {
     border: 1px solid #F08080;
-    background-color: #FFDCDC;
+    background-color: rgba(255, 220, 220, 0.596);
     border-radius: 10px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 7px;
 }
 
@@ -15,4 +15,16 @@ body{
 
 .add-note:active {
     color: white;
+}
+
+.top-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 550px) {
+    .top-wrapper {
+        flex-direction: column;
+    }
 }

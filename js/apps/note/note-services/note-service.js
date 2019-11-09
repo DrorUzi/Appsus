@@ -38,7 +38,7 @@ function saveNote(note, noteId) {
     if (!noteId) {
         var newNote = note
         if (note.type === 'todo') {
-            newNote.todos =  _createNoteTodo(newNote.todos)
+            newNote.todos = _createNoteTodo(newNote.todos)
         }
         newNote.id = utilsService.makeId()
         gNotes.unshift(newNote)
@@ -69,7 +69,7 @@ var defaultNotes = [
         isPinned: false,
         type: 'img',
         editedAt: 'today',
-        bcgColor:''
+        bcgColor: ''
     },
     {
         id: utilsService.makeId(),
@@ -78,7 +78,7 @@ var defaultNotes = [
         isPinned: false,
         type: 'txt',
         editedAt: 'today',
-        bcgColor:''
+        bcgColor: ''
     },
     {
         id: utilsService.makeId(),
@@ -104,7 +104,7 @@ var defaultNotes = [
         isPinned: true,
         type: 'todo',
         editedAt: 'today',
-        bcgColor:''
+        bcgColor: ''
     },
 ]
 _loadGNotes()
@@ -119,7 +119,7 @@ function _loadGNotes() {
     }
 }
 
-function saveNotesToStorage(){
+function saveNotesToStorage() {
     utilsService.saveToStorage(NOTES_KEY, gNotes)
 }
 

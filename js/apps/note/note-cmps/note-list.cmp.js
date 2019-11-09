@@ -7,9 +7,11 @@ export default {
     props: ['notes'],
     template: `
     <section class="">
-        <transition name="slide-fade">
-            <router-view></router-view>
-        </transition>
+        <div>
+            <transition name="slide-fade">
+                <router-view></router-view>
+            </transition>
+        </div>
         <section>
             <fieldset class="pinned-fieldset">
             <legend>Pinned</legend>

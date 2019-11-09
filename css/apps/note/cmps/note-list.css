@@ -1,36 +1,64 @@
 .note-list {
     width: 70%;
     margin: 0 auto;
-
-    column-count:4;
-
+    column-count: 4;
+    column-gap: 10px;
 }
 
-.pinned-fieldset{
+
+
+.pinned-fieldset {
     width: 70%;
     margin: 0 auto;
     border-radius: 20px;
     border: 1px solid black;
 }
+@media (max-width: 950px) {
+    .note-list {
+        width: 90%;
+    }
+    .pinned-fieldset {
+        width: 90%;
+    }
+}
+@media (max-width: 750px) {
+    .note-list {
+        column-count: 3;
+    }
+}
+@media (max-width: 550px) {
+    .note-list {
+        column-count: 2;
+    }
+}
+@media (max-width: 350px) {
+    .note-list {
+        column-count: 1;
+    }
+}
+
+.pinned-fieldset .list-item {
+    display: block;
+}
 
 .list-item {
-    margin: 10px;
+    /* margin: 10px; margin fucks it all up */
     width: 95%;
     overflow: hidden;
     break-inside: avoid;
-    display: inline-block;
+    display: block;
 }
-.txt {}
 
-.img {}
-
-.todo {}
 
 .pinned {
     width: 100%;
     margin-bottom: 30px;
 }
 
+.add-note-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
 /* 
 .note-list {
     width: 70%;
@@ -62,7 +90,6 @@
     grid-column: span 3;
     grid-row: span 3;
 } */
-
 
 /* flex */
 

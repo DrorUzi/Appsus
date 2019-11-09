@@ -5,10 +5,12 @@ import sideBar from '../email-cmps/side-bar.cmp.js'
 import emailFilter from '../email-cmps/email-filter.cmp.js'
 import emailService from '../email-services/email-service.js'
 import { eventBus } from '../../../main-services/eventbus-service.js'
+import navBar from '../../../main-cmps/main-header.cmp.js';
 
 export default {
   template: `
     <section class="email-backgroung">
+      <nav-bar :currApp="'missEmail'"></nav-bar>
       <div class="email-app container">
           <email-filter @sort="setSort" @filtered="setFilter"></email-filter>
           <div class="main-info">
@@ -24,7 +26,7 @@ export default {
       unRead: null,
       filterBy: null,
       sortBy: [],
-     
+
     }
   },
   methods: {
@@ -63,17 +65,18 @@ export default {
         return sortedByTitle
       } else {
         var sortedByDate = this.emails.sort((a, b) => {
-          return (a.sentAt > b.sentAt) ? -1 : (a.sentAt < b.sentAt) ?1 :0
+          return (a.sentAt > b.sentAt) ? -1 : (a.sentAt < b.sentAt) ? 1 : 0
         })
         return sortedByDate
       }
     },
-   
+
   },
   components: {
     emailList,
     sideBar,
-    emailFilter
+    emailFilter,
+    navBar
   },
   created() {
     emailService.getEmails()
@@ -98,7 +101,7 @@ export default {
           eventBus.$emit('deletedMails', this.emails)
         })
     })
-   
+
   },
   mounted() {
     emailService.getUnreadMails()
