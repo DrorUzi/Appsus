@@ -19,17 +19,17 @@ function findNoteById(noteId) {
     return Promise.resolve(selectedNote)
 }
 
-function createNoteTodo(todos,isNew) {
-    if(isNew){
+function createNoteTodo(todos, isNew) {
+    if (isNew) {
         var newTodos = todos.map(todo => {
             return {
                 todoId: utilsService.makeId(),
                 txt: todo,
                 isDone: false
-            } 
+            }
         })
     }
-    else{
+    else {
         return {
             todoId: utilsService.makeId(),
             txt: todos,
@@ -49,9 +49,10 @@ function saveNote(note, noteId) {
     if (!noteId) {
         var newNote = note
         if (note.type === 'todo') {
-            newNote.todos = createNoteTodo(newNote.todos,true)
+            newNote.todos = createNoteTodo(newNote.todos, true)
         }
         newNote.id = utilsService.makeId()
+        Vue.set(newNote, '', newNote.todos)
         gNotes.unshift(newNote)
     }
     else {
@@ -130,7 +131,7 @@ function _loadGNotes() {
     }
 }
 
-function saveNotesToStorage() {    
+function saveNotesToStorage() {
     utilsService.saveToStorage(NOTES_KEY, gNotes)
 }
 

@@ -49,6 +49,9 @@ export default {
         bcgColor: ''
       }
       noteService.saveNote(note)
+    },
+    markAsDone(todoData) {
+      noteService.toggleIsDone(todoData.todoId, todoData.noteTodos)
     }
   },
   computed: {
@@ -65,6 +68,7 @@ export default {
   },
   created() {
     eventBus.$on('saveAsNote', this.saveAsNote)
+    eventBus.$on('markedAsDone', this.markAsDone)
     noteService.getNotes()
       .then(notes => this.notes = notes)
   },

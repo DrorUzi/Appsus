@@ -1,5 +1,6 @@
 'use strict';
 
+
 import previewTopPanel from '../note-cmps/note-top-panel.cmp.js';
 import previewBottomPanel from '../note-cmps/note-bottom-panel.cmp.js';
 import longTxt from '../note-cmps/long-txt.cmp.js';
