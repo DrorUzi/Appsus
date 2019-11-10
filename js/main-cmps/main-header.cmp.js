@@ -4,7 +4,7 @@ export default {
     template: `
     <div class="home-main-header container">
     <div class="screen" @click="toggleMenu" :class="{'open-menu-screen':isMenuOpen}"></div>
-        <img class="main-logo" src="../../img/logo3.png" @click="pushToHome">
+        <img class="main-logo" src="img/logo3.png" @click="pushToHome">
         <nav class="main-nav-bar"> 
             <div @click="toggleMenu" class="nav-icon">
                 <div></div>
