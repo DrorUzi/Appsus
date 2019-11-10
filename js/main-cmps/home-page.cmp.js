@@ -15,8 +15,7 @@ export default {
                 <router-link class="add-link" to="/email/list"><h3>EMAIL</h3><img src="img/email2.png" alt=""><span>Use our newest technology with the unbelivible ability to contact remote friend and family! This unmatches idea could also be used for your job! only if you have one</span></router-link>
                 <router-link class="add-link" to="/note"><h3>NOTES</h3><img src="img/note2.png" alt=""><span>Extend your brain to the machines! use our nice note app to store your memories in our hands! We will take good care of it!</span></router-link>
             </div>
-        </div>
-        
+        </div>        
     </section>
     `,
     components:{

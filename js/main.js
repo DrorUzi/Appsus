@@ -1,7 +1,7 @@
 'use strict';
-
+import appFooter from './main-cmps/app-footer.cmp.js';
 import router from './routes.js'
-import mainHeader from './main-cmps/main-header.cmp.js'
+
 
 new Vue({
     router,
@@ -9,10 +9,11 @@ new Vue({
     template: `
         <div>
             <router-view></router-view>
+            <app-footer></app-footer>
         </div>
     `,
     components:{
-        mainHeader
+        appFooter
     }
 
 })

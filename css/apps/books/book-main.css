@@ -4,14 +4,13 @@
     font-family: openSans;
     src: url('../../../fonts/OpenSansCondensed-Light.ttf');
 }
-
 .book-app{
     margin: 0;
     background-image: url('../img/bcg3.jpg');
     font-family: openSans;
 }
 
-h5 {
+.list-container h5 {
     margin: 5px;
 }
 
@@ -232,6 +231,8 @@ ul {
     text-align: center;
     align-items: center;
     justify-content: center;
+    margin-top:20px;
+    margin-bottom: 20px;
 }
 
 .details-second {
@@ -266,20 +267,25 @@ ul {
 
 /* main-header */
 
-.home-main-header {
+.book-home-main-header {
     height: 5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid lightcoral;
-    padding-right: 50px;
-    padding-left: 50px;
+   padding: 50px 20px;
+}
+.book-home-main-header h1{
+    display: inline-block;
 }
 
-.nav-bar {
-    width: 40%;
+.book-nav-bar {
+    width: 55%;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center ;
+
 }
 
 a {
