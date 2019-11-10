@@ -6,10 +6,6 @@ import noteList from '../note-cmps/note-list.cmp.js';
 import noteFilter from '../note-cmps/note-filter.cmp.js';
 import navBar from '../../../main-cmps/main-header.cmp.js';
 
-// bugs for sunday:
-//need to find a way to introduce the new notes to vue (observer)
-//todo preview works properly only after refresh
-// ==========================================
 //wanna try to change note bcg color opacity only
 // ==================================
 // on emit to mail app compose wont fill the form at all
@@ -49,6 +45,9 @@ export default {
         bcgColor: ''
       }
       noteService.saveNote(note)
+    },
+    markAsDone(todoData) {
+      noteService.toggleIsDone(todoData.todoId, todoData.noteTodos)
     }
   },
   computed: {
@@ -65,6 +64,7 @@ export default {
   },
   created() {
     eventBus.$on('saveAsNote', this.saveAsNote)
+    eventBus.$on('markedAsDone', this.markAsDone)
     noteService.getNotes()
       .then(notes => this.notes = notes)
   },

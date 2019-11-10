@@ -11,7 +11,7 @@ export default {
                 <textarea class="note-edit-textarea" ref="textArea" v-if="checkNoteTodo" cols="30" :rows="textAreaSize(note.type)" v-model="note.data" @keypress="checkIfEnter" :placeholder="placeholderTxt(note.type)"></textarea>
                 <template v-if="isNoteTodo">
                     <textarea class="note-edit-textarea" v-for="currTodo in note.todos" cols="30" rows=1 v-model="currTodo.txt" placeholder="Todo"></textarea>
-                    <textarea class="note-edit-textarea" ref="todoTextArea" cols="30" rows=1 placeholder="Todo" v-model="note.data"></textarea>
+                    <textarea @keypress="checkIfEnter" class="note-edit-textarea" ref="todoTextArea" cols="30" rows=1 placeholder="Todo" v-model="note.data"></textarea>
                 </template>
                 <button @click="addTodo" class="edit-add-btn add-todo-btn" type="button" v-if="note.type==='todo'">Add Todo</button>
                 <input v-if="note.type==='img'" type="url" placeholder="Enter image URL" class="url-input" v-model="note.data">
@@ -59,9 +59,6 @@ export default {
         }
     },
     methods: {
-        //need to find a way to introduce the new notes to vue (observer)
-        //todo preview works properly only after refresh
-        //puttin on hold for the meanwhile,too much times wasted
         addTodo() {
             if(!this.note.data)return Swal.fire('Please write something')
             if (this.note.id) {

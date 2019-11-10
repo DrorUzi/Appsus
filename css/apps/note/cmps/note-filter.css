@@ -1,4 +1,3 @@
-
 .note-filter-input {
     border: 1px solid lightcoral;
     background-color: rgba(255, 220, 220, 0.514);
@@ -18,15 +17,29 @@
     border-radius: 10px;
 }
 
+@media (max-width: 450px) {
+    .note-filter-input {
+        width: 80%;
+    }
+    .filter-select {
+        width: 80%;
+    }
+    .note-filter{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+    }
+}
+
 .filter-select option {
     background-color: rgba(240, 128, 128, 0.178);
     color: rgb(0, 0, 0);
 }
 
-
-@media (max-width: 350px) {
+/* @media (max-width: 350px) {
     .note-filter {
         display: flex;
         flex-direction: column;
     }
-}
+} */

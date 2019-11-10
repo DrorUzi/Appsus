@@ -2,7 +2,7 @@
 import { noteService } from '../note-services/note-service.js';
 import previewTopPanel from '../note-cmps/note-top-panel.cmp.js';
 import previewBottomPanel from '../note-cmps/note-bottom-panel.cmp.js';
-
+import { eventBus } from "../../../main-services/eventbus-service.js"
 
 export default {
     props: ['note'],
@@ -25,24 +25,23 @@ export default {
     },
     methods: {
         isDone(todo) {
-            return (todo.isDone)? 'done-todo' : ''
+            return (todo.isDone) ? 'done-todo' : ''
         },
-        togglePanel(isMouseIn) {                        
+        togglePanel(isMouseIn) {            
             this.isMouseIn = isMouseIn
         },
-        markAsDone(todoId){
-            noteService.toggleIsDone(todoId,this.note.todos)
+        markAsDone(todoId) {
+            var todoData = {
+                noteTodos: this.note.todos,
+                todoId
+            }
+            eventBus.$emit('markedAsDone', todoData)
         }
 
     },
-    computed: {
-
-
-    },
-    created() {
-
-    },
-    components:{
+    computed: {},
+    created() {},
+    components: {
         previewTopPanel,
         previewBottomPanel,
     }

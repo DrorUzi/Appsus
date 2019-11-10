@@ -4,7 +4,7 @@ export default {
     template: `
     <div class="home-main-header container">
     <div class="screen" @click="toggleMenu" :class="{'open-menu-screen':isMenuOpen}"></div>
-        <img src="../../img/logo3.png">
+        <img class="main-logo" src="../../img/logo3.png" @click="pushToHome">
         <nav class="main-nav-bar"> 
             <div @click="toggleMenu" class="nav-icon">
                 <div></div>
@@ -33,6 +33,9 @@ export default {
     methods: {
         toggleMenu() { 
             this.isMenuOpen = !this.isMenuOpen
+        },
+        pushToHome(){
+            this.$router.replace(`/`)
         }
     },
 }
