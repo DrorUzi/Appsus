@@ -17,7 +17,6 @@ export default {
                     <router-link class="nav-item" v-if="currApp!=='missKeep'" to="/note" exact>Keep</router-link> 
                 </template>
                 <template v-else>
-                    <router-link class="nav-item" to="/" exact>Projects</router-link> 
                     <router-link class="nav-item" to="/contact">Contact</router-link>
                     <router-link class="nav-item" to="/about" exact>About</router-link>
                 </template>

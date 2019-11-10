@@ -58,7 +58,6 @@ export default {
             eventBus.$emit('openFilter',true)
         }
     },
-  
     created() {
         const emailId = this.$route.params.id;
         if (emailId) {
@@ -67,7 +66,9 @@ export default {
                     var newEmail = JSON.parse(JSON.stringify(email))
                     this.email = newEmail
                     this.email.subject = 'Re: ' + this.email.subject
-                    this.email.isSent = true 
+                    this.email.isSent = true;
+                    this.email.isRead = false;
+                    eventBus.$emit('read', (this.email.id))
                 })
         }
         var emailFromNote = this.$route.query;

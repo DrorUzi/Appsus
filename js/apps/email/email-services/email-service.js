@@ -6,8 +6,8 @@ export default {
     getEmails,
     findEmailById,
     deleteEmail,
-    getUnreadMails,
-    changeToRead,
+    getUnreadEmailsNum,
+    changeRead,
     sendMail,
     getStaredEmails,
     getDraftEmails,
@@ -54,7 +54,8 @@ function findEmailById(id) {
     return Promise.resolve(email)
 }
 
-function getUnreadMails() {
+
+function getUnreadEmailsNum() {
     var res = 0
     gEmails.forEach(email => {
         if (!email.isRead) res++
@@ -69,7 +70,7 @@ function sendMail(newEmail) {
 
 }
 
-function changeToRead(emailId) {
+function changeRead(emailId) {
     var currEmail = gEmails.find(email => {
         return email.id === emailId
     })
@@ -245,5 +246,111 @@ var starterEmails = [
         isStared: false,
         isDraft: false,
     },
+    {
+        name: 'Dany',
+        id: utilsService.makeId(),
+        subject: 'Hello how are you?',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
+        isRead: false,
+        isMarked: true,
+        sentAt: new Date().toLocaleString(),
+        isStared: false,
+        isDraft: true,
+    },
+    {
+        name: 'Ron',
+        id: utilsService.makeId(),
+        subject: 'Hello how are you?',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
+        isRead: false,
+        isMarked: true,
+        sentAt: new Date().toLocaleString(),
+        isStared: true,
+        isDraft: true,
+    },
+    {
+        name: 'Ron',
+        id: utilsService.makeId(),
+        subject: 'Hello how are you?',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
+        isRead: false,
+        isMarked: true,
+        sentAt: new Date().toLocaleString(),
+        isStared: true,
+        isDraft: true,
+    },
+    {
+        name: 'Ron',
+        id: utilsService.makeId(),
+        subject: 'Hello how are you?',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
+        isRead: false,
+        isMarked: true,
+        sentAt: new Date().toLocaleString(),
+        isStared: false,
+        isDraft: true,
+    },
+    {
+        name: 'Shaul',
+        id: utilsService.makeId(),
+        subject: 'Hello how are you?',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
+        isRead: false,
+        isMarked: true,
+        sentAt: new Date().toLocaleString(),
+        isStared: true,
+        isDraft: false,
+    },
+    {
+        name: 'Anna',
+        id: utilsService.makeId(),
+        subject: 'Hello how are you?',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
+        isRead: false,
+        isMarked: true,
+        sentAt: new Date().toLocaleString(),
+        isStared: true,
+        isDraft: false,
+    },
+    {
+        name: 'Babi',
+        id: utilsService.makeId(),
+        subject: 'Hello how are you?',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
+        isRead: false,
+        isMarked: true,
+        sentAt: new Date().toLocaleString(),
+        isStared: true,
+        isDraft: false,
+    },
+    {
+        name: 'Adam',
+        id: utilsService.makeId(),
+        subject: 'Hello how are you?',
+        body: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum harum ipsum ab, quaerat nulla animi hic pariatur voluptatem, deserunt eligendi optio dolorum eveniet ipsam sed dignissimos id explicabo adipisci laudantium!',
+        sentTo: 'noa@gmail.com',
+        sentFrom: 'moshe@gmail.com',
+        isRead: false,
+        isMarked: true,
+        sentAt: new Date().toLocaleString(),
+        isStared: true,
+        isDraft: false,
+    },
 
 ]
+
+window.gEmails = gEmails

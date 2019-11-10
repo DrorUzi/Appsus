@@ -26,6 +26,8 @@ export default {
       unRead: null,
       filterBy: null,
       sortBy: [],
+      stared :[]
+
 
     }
   },
@@ -76,7 +78,7 @@ export default {
     emailList,
     sideBar,
     emailFilter,
-    navBar
+    navBar,
   },
   created() {
     emailService.getEmails()
@@ -84,8 +86,8 @@ export default {
         this.emails = emails
       })
     eventBus.$on('read', (emailId) => {
-      emailService.changeToRead(emailId)
-      emailService.getUnreadMails()
+      emailService.changeRead(emailId)
+      emailService.getUnreadEmailsNum()
         .then(res => { this.unRead = res })
     })
     eventBus.$on('newMail', (newEmail) => {
@@ -104,13 +106,15 @@ export default {
     eventBus.$on('star', (emailId) => {
       emailService.changeToStared(emailId)
       emailService.getStaredEmails()
-        .then(res => { this.stared = res })
+        .then(res => { 
+          eventBus.$emit('changeStar',res)
+        })
     })
 
 
   },
   mounted() {
-    emailService.getUnreadMails()
+    emailService.getUnreadEmailsNum()
       .then(res => this.unRead = res)
   }
 

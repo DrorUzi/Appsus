@@ -20,7 +20,7 @@ export default {
                 </select>
             </div>
             <div class="sort-container">
-                <h6>Sort By:</h6> 
+                <h6>Sort:</h6> 
                 <span @click="setSort('title')">Title</span>
                 <span @click="setSort('date')">Date</span>
             </div>
