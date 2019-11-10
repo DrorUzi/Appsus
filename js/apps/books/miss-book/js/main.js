@@ -6,9 +6,8 @@ import mainFooter from './cmps/main-footer.cmp.js'
 import userMsg from './cmps/user-msg.cmp.js';
 
 
-new Vue({
+export default {
     router: theRouter,
-    el: '#book-app',
     template: `
         <div>
             <app-header></app-header>
@@ -17,12 +16,12 @@ new Vue({
             <main-footer></main-footer>
         </div>
     `,
-    components:{
+    components: {
         appHeader,
         mainFooter,
         userMsg
     }
-  
-})
+
+}
 
 

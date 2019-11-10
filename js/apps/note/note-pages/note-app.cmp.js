@@ -10,8 +10,6 @@ import navBar from '../../../main-cmps/main-header.cmp.js';
 // ==================================
 // on emit to mail app compose wont fill the form at all
 //======================================
-//edit section - buttons and txt not listening to the css???
-
 
 export default {
   template: `

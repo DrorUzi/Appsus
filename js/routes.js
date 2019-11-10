@@ -13,6 +13,8 @@ import staredEmails from './apps/email/email-cmps/email-stared.cmp.js'
 import deletedEmails from './apps/email/email-cmps/email-deleted.cmp.js'
 import sentEmails from './apps/email/email-cmps/email-sent.cmp.js'
 import draftsEmails from './apps/email/email-cmps/email-draft.cmp.js'
+import bookApp from './apps/books/miss-book/js/main.js'
+// import bookApp from './apps/books/miss-book/js/pages/book-app.cmp.js'
 
 
 
@@ -20,6 +22,10 @@ const myRoutes = [
     {
         path: '/',
         component: homepage
+    },
+    {
+        path: '/book',
+        component: bookApp
     },
     {
         path: '/email',

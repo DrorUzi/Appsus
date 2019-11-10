@@ -2,7 +2,7 @@
     border: 1px solid lightcoral;
     background-color: rgba(255, 220, 220, 0.514);
     border-radius: 10px;
-    min-height: 43px;
+    min-height: 47px;
     font-size: 1.3rem;
     outline: none;
 }
@@ -13,7 +13,7 @@
     color: black;
     outline: none;
     font-size: 1.3rem;
-    min-height: 43px;
+    min-height: 47px;
     border-radius: 10px;
 }
 

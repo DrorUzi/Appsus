@@ -48,8 +48,8 @@ export default {
         }
     },
     created(){
-        eventBus.$on('openFilter',()=>{
-            this.isClosed = false
+        eventBus.$on('openFilter',(isOpen)=>{
+            this.isClosed = isOpen
         })
     }
 }

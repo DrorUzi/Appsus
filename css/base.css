@@ -10,6 +10,7 @@ body{
 .keep-app{
     background-image: url('../img/email/bcg4.jpg');
     min-height: 100vh;
+    font-family: openSans ;
 }
 
 

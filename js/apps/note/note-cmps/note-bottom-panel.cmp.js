@@ -24,10 +24,10 @@ export default {
             noteService.saveNotesToStorage()
         },
 
-        getTodoAsTxt(todos) {            
+        getTodoAsTxt(todos) {
             var todosStr = todos.map(todo => {
-               return todo.txt + '\n'
-            })            
+                return todo.txt + '\n'
+            })
             return todosStr
         },
 
@@ -51,10 +51,10 @@ export default {
                     else if (this.currNote.type === 'img') {
                         emailMsg.txt = 'Check out that image! : ' + this.currNote.data
                     }
-                    else emailMsg.txt = 'Todos : ' + this.getTodoAsTxt(this.currNote.todos)
-                    emailMsg.title = this.currNote.title 
-                    eventBus.$emit('sendAsEmail',emailMsg)
-                    this.$router.replace(`../email/compose/`)
+                    else emailMsg.txt = 'Todos : \n' + this.getTodoAsTxt(this.currNote.todos)
+                    emailMsg.title = this.currNote.title
+                    eventBus.$emit('sendAsEmail', emailMsg)
+                    this.$router.push({ path: '../email/compose/', query: { title: emailMsg.title, txt: emailMsg.txt } })
                 }
             })
         }
