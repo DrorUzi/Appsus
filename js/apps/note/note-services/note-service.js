@@ -76,34 +76,27 @@ function deleteNote(noteId) {
 var defaultNotes = [
     {
         id: utilsService.makeId(),
-        title: 'img',
+        title: 'look issadog',
+        data: 'https://media.tenor.com/images/1690cb57b451cc488ad63e63042215e9/tenor.gif',
+        isPinned: false,
+        type: 'img',
+        editedAt: 'today',
+        bcgColor: ''
+    },
+    {
+        id: utilsService.makeId(),
+        title: 'view from house after coding',
         data: 'https://imgcomfort.com/Userfiles/Upload/images/illustration-geiranger.jpg',
         isPinned: false,
         type: 'img',
         editedAt: 'today',
         bcgColor: ''
     },
+    
+   
     {
         id: utilsService.makeId(),
-        title: 'img',
-        data: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7S0c-Kw8oGpYDeXxQvh7x2mQ4eZstuLSVpm_WNs6IDkhe6iO-Dw&s',
-        isPinned: false,
-        type: 'img',
-        editedAt: 'today',
-        bcgColor: ''
-    },
-    {
-        id: utilsService.makeId(),
-        title: 'Grandma\'s cake',
-        data: 'love love love',
-        isPinned: false,
-        type: 'txt',
-        editedAt: 'today',
-        bcgColor: ''
-    },
-    {
-        id: utilsService.makeId(),
-        title: 'todo',
+        title: 'Life',
         data: '',
         todos: [
             {
@@ -119,6 +112,32 @@ var defaultNotes = [
             {
                 todoId: utilsService.makeId(),
                 txt: 'repeat',
+                isDone: true
+            },
+        ],
+        isPinned: false,
+        type: 'todo',
+        editedAt: 'today',
+        bcgColor: ''
+    },
+    {
+        id: utilsService.makeId(),
+        title: 'Sprint',
+        data: '',
+        todos: [
+            {
+                todoId: utilsService.makeId(),
+                txt: 'fix bugs',
+                isDone: false
+            },
+            {
+                todoId: utilsService.makeId(),
+                txt: 'make pretty',
+                isDone: false
+            },
+            {
+                todoId: utilsService.makeId(),
+                txt: 'responsive',
                 isDone: false
             },
         ],
@@ -127,6 +146,71 @@ var defaultNotes = [
         editedAt: 'today',
         bcgColor: ''
     },
+    {
+        id: utilsService.makeId(),
+        title: 'Grandma\'s cake',
+        data: 'Sugar,Spice,And everything nice',
+        isPinned: true,
+        type: 'txt',
+        editedAt: 'today',
+        bcgColor: ''
+    },
+    
+    {
+        id: utilsService.makeId(),
+        title: 'beutiful image',
+        data: 'http://s6.favim.com/orig/65/logo-beautiful-text-Favim.com-592093.jpg',
+        isPinned: true,
+        type: 'img',
+        editedAt: 'today',
+        bcgColor: ''
+    },
+    {
+        id: utilsService.makeId(),
+        title: 'Me on sprint',
+        data: 'https://media.giphy.com/media/klVA0qx4KW7kY/giphy.gif',
+        isPinned: true,
+        type: 'img',
+        editedAt: 'today',
+        bcgColor: ''
+    },
+    {
+        id: utilsService.makeId(),
+        title: 'pp',
+        data: '',
+        todos: [
+            {
+                todoId: utilsService.makeId(),
+                txt: 'work',
+                isDone: true
+            },
+            {
+                todoId: utilsService.makeId(),
+                txt: 'work',
+                isDone: true
+            },
+            {
+                todoId: utilsService.makeId(),
+                txt: 'work',
+                isDone: true
+            },
+            {
+                todoId: utilsService.makeId(),
+                txt: 'work',
+                isDone: true
+            },
+            {
+                todoId: utilsService.makeId(),
+                txt: 'work',
+                isDone: true
+            },
+        ],
+        isPinned: false,
+        type: 'todo',
+        editedAt: 'today',
+        bcgColor: ''
+    },
+    
 ]
 _loadGNotes()
 

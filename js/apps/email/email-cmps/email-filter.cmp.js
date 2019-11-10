@@ -5,7 +5,7 @@ export default {
         <div   :class="{hidden : isClosed}" class="email-filter">
         <router-link  to="/email/compose"  >
             <div @click="onCloseFilter" class="compose-btn">
-                <img src="/img/email/compose.png">
+                <img src="img/email/compose.png">
                 <span>COMPOSE</span>
             </div>
         </router-link>

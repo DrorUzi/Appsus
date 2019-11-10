@@ -20,7 +20,7 @@ export default {
                 <textarea class="compose-input" placeholder="body" v-model="email.body">
                 </textarea>
                 <div class="compose-btn-container">
-                    <button type="submit" class="send-btn"><img src="/img/email/send2.png">Send</button>
+                    <button type="submit" class="send-btn"><img src="img/email/send2.png">Send</button>
                     <button type="button" @click="saveDraft" class="draft-btn">Save as draft</button>
                 </div>
             </form>
