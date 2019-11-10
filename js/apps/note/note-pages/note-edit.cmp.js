@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         addTodo() {
-            if(!this.note.data)return Swal.fire('Please write something')
+            if (!this.note.data) return Swal.fire('Please write something')
             if (this.note.id) {
                 var newTodo = noteService.createNoteTodo(this.note.data, false)
                 this.note.todos.push(newTodo)

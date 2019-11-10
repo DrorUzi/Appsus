@@ -14,10 +14,6 @@ import about from './cmps/about.cmp.js'
 
 const myRoutes = [
     {
-        path: '/',
-        component: homePage
-    },
-    {
         path: '/about',
         component: about,
         children:[

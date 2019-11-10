@@ -43,7 +43,7 @@ export default {
     },
     methods: {
         openFilter() {
-            eventBus.$emit('openFilter')
+            eventBus.$emit('openFilter',false)
         },
         toggleMenu() { 
             this.isMenuOpen = !this.isMenuOpen

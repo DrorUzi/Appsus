@@ -85,8 +85,17 @@ var defaultNotes = [
     },
     {
         id: utilsService.makeId(),
-        title: 'txt',
-        data: 'lala',
+        title: 'img',
+        data: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7S0c-Kw8oGpYDeXxQvh7x2mQ4eZstuLSVpm_WNs6IDkhe6iO-Dw&s',
+        isPinned: false,
+        type: 'img',
+        editedAt: 'today',
+        bcgColor: ''
+    },
+    {
+        id: utilsService.makeId(),
+        title: 'Grandma\'s cake',
+        data: 'love love love',
         isPinned: false,
         type: 'txt',
         editedAt: 'today',
@@ -105,7 +114,7 @@ var defaultNotes = [
             {
                 todoId: utilsService.makeId(),
                 txt: 'sleep',
-                isDone: true
+                isDone: false
             },
             {
                 todoId: utilsService.makeId(),

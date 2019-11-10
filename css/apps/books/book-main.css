@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: openSans;
-    src: url('/font/OpenSansCondensed-Light.ttf');
+    src: url('../../../fonts/OpenSansCondensed-Light.ttf');
 }
 
 .book-app{
