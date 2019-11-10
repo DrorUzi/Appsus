@@ -6,8 +6,9 @@ export const noteService = {
     findNoteById,
     saveNote,
     deleteNote,
-    findTodoById,
-    saveNotesToStorage
+    toggleIsDone,
+    saveNotesToStorage,
+    createNoteTodo
 }
 
 const NOTES_KEY = 'notes'
@@ -18,27 +19,37 @@ function findNoteById(noteId) {
     return Promise.resolve(selectedNote)
 }
 
-function _createNoteTodo(todos) {
-    var newTodos = todos.map(todo => {
+function createNoteTodo(todos,isNew) {
+    if(isNew){
+        var newTodos = todos.map(todo => {
+            return {
+                todoId: utilsService.makeId(),
+                txt: todo,
+                isDone: false
+            } 
+        })
+    }
+    else{
         return {
             todoId: utilsService.makeId(),
-            txt: todo,
+            txt: todos,
             isDone: false
         }
-    })
+    }
     return newTodos
 }
 
-function findTodoById(todoId, todos) {
+function toggleIsDone(todoId, todos) {
     var currTodo = todos.find(todo => todo.todoId === todoId)
-    return currTodo
+    currTodo.isDone = !currTodo.isDone
+    saveNotesToStorage()
 }
 
 function saveNote(note, noteId) {
     if (!noteId) {
         var newNote = note
         if (note.type === 'todo') {
-            newNote.todos = _createNoteTodo(newNote.todos)
+            newNote.todos = createNoteTodo(newNote.todos,true)
         }
         newNote.id = utilsService.makeId()
         gNotes.unshift(newNote)
@@ -50,14 +61,14 @@ function saveNote(note, noteId) {
                 noteToEdit.id = noteId
             })
     }
-    utilsService.saveToStorage(NOTES_KEY, gNotes)
+    saveNotesToStorage()
     return Promise.resolve(newNote)
 }
 
 function deleteNote(noteId) {
     var selectedNoteIdx = gNotes.findIndex(note => note.id === noteId)
     gNotes.splice(selectedNoteIdx, 1)
-    utilsService.saveToStorage(NOTES_KEY, gNotes)
+    saveNotesToStorage()
     return Promise.resolve('note deleted successfully')
 }
 
@@ -112,14 +123,14 @@ _loadGNotes()
 function _loadGNotes() {
     if (!utilsService.loadFromStorage(NOTES_KEY)) {
         gNotes = defaultNotes
-        utilsService.saveToStorage(NOTES_KEY, gNotes)
+        saveNotesToStorage()
     }
     else {
         gNotes = utilsService.loadFromStorage(NOTES_KEY)
     }
 }
 
-function saveNotesToStorage() {
+function saveNotesToStorage() {    
     utilsService.saveToStorage(NOTES_KEY, gNotes)
 }
 

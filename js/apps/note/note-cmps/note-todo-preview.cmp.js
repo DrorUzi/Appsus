@@ -8,7 +8,7 @@ export default {
     props: ['note'],
     template: `
     <div class="note-preview" @mouseenter="togglePanel(true)" @mouseleave="togglePanel(false)">
-        <img class="pin-img" src="img/pin.png">
+        <img class="pin-img" src="img/pinned2.png">
         <preview-top-panel :currNote="note" :isMouseIn ="isMouseIn"></preview-top-panel>
         <ul class="todo-list">
             <li v-for="todo in note.todos" :key="todo.todoId" :class="isDone(todo)" @click="markAsDone(todo.todoId)">
@@ -27,12 +27,11 @@ export default {
         isDone(todo) {
             return (todo.isDone)? 'done-todo' : ''
         },
-        togglePanel(isMouseIn) {            
+        togglePanel(isMouseIn) {                        
             this.isMouseIn = isMouseIn
         },
         markAsDone(todoId){
-            let currTodo = noteService.findTodoById(todoId,this.note.todos)
-            currTodo.isDone = !currTodo.isDone;
+            noteService.toggleIsDone(todoId,this.note.todos)
         }
 
     },

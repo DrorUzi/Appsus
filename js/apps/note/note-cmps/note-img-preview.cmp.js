@@ -7,7 +7,7 @@ export default {
     props: ['note'],
     template: `
     <div class="note-preview" @mouseenter="togglePanel(true)" @mouseleave="togglePanel(false)">
-        <img class="pin-img" src="img/pin.png">
+        <img class="pin-img" src="img/pinned2.png">
         <preview-top-panel :currNote="note" :isMouseIn ="isMouseIn"></preview-top-panel>
         <img class="note-preview-img" :src="note.data" :alt="note.title+' Image'" title="Appsus">
         <preview-bottom-panel :currNote="note" :isMouseIn ="isMouseIn"></preview-bottom-panel>

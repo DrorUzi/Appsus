@@ -1,11 +1,9 @@
 .note-list {
     width: 70%;
     margin: 0 auto;
-    column-count: 4;
+    column-count: 3;
     column-gap: 10px;
 }
-
-
 
 .pinned-fieldset {
     width: 70%;
@@ -14,6 +12,7 @@
     border: 1px solid black;
     margin-bottom: 20px;
 }
+
 @media (max-width: 950px) {
     .note-list {
         width: 90%;
@@ -22,16 +21,19 @@
         width: 90%;
     }
 }
+
 @media (max-width: 750px) {
     .note-list {
         column-count: 3;
     }
 }
+
 @media (max-width: 550px) {
     .note-list {
         column-count: 2;
     }
 }
+
 @media (max-width: 350px) {
     .note-list {
         column-count: 1;
@@ -42,6 +44,12 @@
     display: block;
 }
 
+/* fix the fieldset shit */
+.pinned-legend{
+    font-size: 1.5rem;
+    font-style: italic;
+}
+
 .list-item {
     /* margin: 10px; margin fucks it all up */
     width: 95%;
@@ -50,16 +58,16 @@
     display: block;
 }
 
-
 .pinned {
     width: 100%;
     margin-bottom: 30px;
 }
 
-.add-note-wrapper{
+.add-note-wrapper {
     display: flex;
     justify-content: space-between;
 }
+
 /* 
 .note-list {
     width: 70%;

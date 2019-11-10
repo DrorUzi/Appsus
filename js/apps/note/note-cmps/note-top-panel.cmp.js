@@ -7,8 +7,8 @@ export default {
     <div class="title-panel">
             <h2 class="title">{{currNote.title}}</h2>
             <div>
-                <label for="preview-pin"><i class="fas fa-thumbtack preview-icon" :class="[{'icon-clicked':currNote.isPinned} ,hidden]"></i></label>
-                <input @change="saveChanges" id="preview-pin" class="checkbox-hide" type="checkbox" v-model="currNote.isPinned">
+                <label :for="currNote.id"><i class="fas fa-thumbtack preview-icon" :class="[{'icon-clicked':currNote.isPinned} ,hidden]"></i></label>
+                <input @change="saveChanges" :id="currNote.id"  type="checkbox" class="hide" v-model="currNote.isPinned">
             </div>
         </div>
     `,
@@ -16,7 +16,7 @@ export default {
         return {
         }
     },
-    methods: {
+    methods: {  
         //bug with checkbox hack, if checkbox not visable dosent work!
         saveChanges() {
             console.log(this.currNote);

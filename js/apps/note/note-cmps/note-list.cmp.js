@@ -13,8 +13,8 @@ export default {
             </transition>
         </div>
         <section>
-            <fieldset class="pinned-fieldset">
-            <legend>Pinned</legend>
+            <fieldset class="pinned-fieldset note-list">
+            <legend class="pinned-legend">Pinned</legend>
                 <section class="note-list pinned">
                         <component v-if="currNote.isPinned" class="list-item" 
                         :class="currNote.type" 

@@ -10,11 +10,7 @@
     align-items: center;
     border-radius: 20px;
 }
-@media (max-width: 950px) {
-    .note-edit {
-        width: 90%;
-    }
-}
+
 @media (max-width: 950px) {
     .note-edit {
         width: 90%;
@@ -32,9 +28,12 @@
     font-size: 1rem;
     outline: none;
     margin-bottom: 10px;
+    font-size: 1.3rem;
+    width: 227px;
+
 }
 
-.note-edit textarea {
+.note-edit-textarea {
     border: 1px solid lightcoral;
     background-color: rgba(255, 220, 220, 0.5);
     border-radius: 10px;
@@ -43,6 +42,7 @@
     outline: none;
     resize: none;
     width: 227px;
+    font-size: 1.3rem;
 }
 
 .url-input {
@@ -90,15 +90,38 @@
 .edited-at {
     margin: 0;
     padding: 0;
-    font-size: .8rem;
+    font-size: 1rem;
 }
 
 .note-checks {
-    height: 80%;
+    min-height: 130px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
 }
+
+.pin-color-wrapper{
+    margin-left: 5px;
+    min-height: 130px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+@media (max-width: 950px) {
+    .note-checks {
+        margin-bottom: 10px;
+        width: 15%;
+        min-height: 20px;
+        flex-direction: row;
+    }
+    .pin-color-wrapper {
+        width: 15%;
+        flex-direction: row;
+        min-height: 20px;
+    }
+}
+
 
 .add-btns {
     display: flex;

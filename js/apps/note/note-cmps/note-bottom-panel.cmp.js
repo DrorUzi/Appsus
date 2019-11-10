@@ -9,8 +9,8 @@ export default {
         <router-link class="edit-link" :to="'/note/edit/'+currNote.id">edit</router-link>
         <i @click="sendAsEmail" class="fas fa-paper-plane preview-icon" :class="hidden"></i>
             <div>
-                <label for="preview-color"><i class="fas fa-fill-drip preview-icon" :class="hidden"></i></label>
-                <input @change="saveChanges" class="hide" id="preview-color" type="color" v-model="currNote.bcgColor">
+                <label :for="currNote.id+'2'"><i class="fas fa-fill-drip preview-icon" :class="hidden"></i></label>
+                <input @change="saveChanges" class="hide" :id="currNote.id+'2'" type="color" v-model="currNote.bcgColor">
             </div>
         </section>
     `,
@@ -20,8 +20,6 @@ export default {
         }
     },
     methods: {
-        //bug with checkbox/input hack, if checkbox not visable dosent work!
-
         saveChanges() {
             noteService.saveNotesToStorage()
         },
@@ -56,7 +54,7 @@ export default {
                     else emailMsg.txt = 'Todos : ' + this.getTodoAsTxt(this.currNote.todos)
                     emailMsg.title = this.currNote.title 
                     eventBus.$emit('sendAsEmail',emailMsg)
-                    this.$router.push(`email/compose/`)
+                    this.$router.replace(`../email/compose/`)
                 }
             })
         }

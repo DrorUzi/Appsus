@@ -1,5 +1,4 @@
 'use strict';
-import utilsService from '../../../main-services/utils-service.js';
 import { noteService } from "../note-services/note-service.js";
 import { eventBus } from "../../../main-services/eventbus-service.js"
 
@@ -9,13 +8,16 @@ export default {
         <form @submit.prevent="onSaveNote" class="note-edit">
             <div class="edit-inputs">
                 <input class="edit-title-input" type="text" placeholder="Title" v-model="note.title" ref="titleInput">
-                <textarea ref="textArea" v-if="checkNoteTodo" cols="30" :rows="textAreaSize(note.type)" v-model="note.data" :placeholder="placeholderTxt(note.type)"></textarea>
+                <textarea class="note-edit-textarea" ref="textArea" v-if="checkNoteTodo" cols="30" :rows="textAreaSize(note.type)" v-model="note.data" @keypress="checkIfEnter" :placeholder="placeholderTxt(note.type)"></textarea>
                 <template v-if="isNoteTodo">
-                    <textarea v-for="currTodo in note.todos" cols="30" rows=1 v-model="currTodo.txt" placeholder="Todo"></textarea>
+                    <textarea class="note-edit-textarea" v-for="currTodo in note.todos" cols="30" rows=1 v-model="currTodo.txt" placeholder="Todo"></textarea>
+                    <textarea class="note-edit-textarea" ref="todoTextArea" cols="30" rows=1 placeholder="Todo" v-model="note.data"></textarea>
                 </template>
+                <button @click="addTodo" class="edit-add-btn add-todo-btn" type="button" v-if="note.type==='todo'">Add Todo</button>
                 <input v-if="note.type==='img'" type="url" placeholder="Enter image URL" class="url-input" v-model="note.data">
-                <button @click="addTodo" class="edit-add-btn add-todo-btn" type="button" v-if="todoBtn">Add Todo</button>
-                <p v-if="note.editedAt" class="edited-at">Last edit at:{{note.editedAt}}</p>
+                <p v-if="note.editedAt" class="edited-at">Last edited at:{{note.editedAt}}</p>
+                <ul v-if="newTodoNote"><li v-for="todo in this.note.todos">{{todo}}</li>
+                </ul>
             </div>
 
             <div class="note-checks" v-if="!noteId">
@@ -32,6 +34,7 @@ export default {
                     <input class="hide" id="todo" type="radio" v-model="note.type" value="todo">
                 </div>
             </div> 
+            <div class="pin-color-wrapper">
                 <div>
                     <label for="pin"><i class="fas fa-thumbtack" :class="{'icon-clicked':note.isPinned}"></i></label>
                     <input id="pin" class="hide" type="checkbox" v-model="note.isPinned">
@@ -40,11 +43,13 @@ export default {
                     <label for="color"><i class="fas fa-fill-drip icon-clicked"></i></label>
                     <input class="hide" id="color" type="color" v-model="note.bcgColor">
                 </div>
+            </div>
             <div class="add-btns">
             <button class="edit-add-btn">Save</button>
             <button type="button" @click="onDeleteNote" class="edit-add-btn">Delete</button>
             </div>
-        </form>
+            
+            </form>
     </section>
     `,
     data() {
@@ -58,10 +63,20 @@ export default {
         //todo preview works properly only after refresh
         //puttin on hold for the meanwhile,too much times wasted
         addTodo() {
-            if (!this.note.todos) this.note.todos = []
-            this.note.todos.push(this.note.data)
-            this.note.data = ''
-            this.$refs.textArea.focus()
+            if(!this.note.data)return Swal.fire('Please write something')
+            if (this.note.id) {
+                var newTodo = noteService.createNoteTodo(this.note.data, false)
+                this.note.todos.push(newTodo)
+                this.note.data = ''
+                noteService.saveNotesToStorage()
+                this.$refs.todoTextArea.focus()
+            }
+            else {
+                if (!this.note.todos) this.note.todos = []
+                this.note.todos.push(this.note.data)
+                this.note.data = ''
+                this.$refs.textArea.focus()
+            }
         },
         loadNote() {
             var idParam = this.$route.params.id
@@ -165,6 +180,12 @@ export default {
 
             return `Enter ${placeholder} here`
         },
+        checkIfEnter(ev) {
+            if (ev.keyCode === 13 && this.note.type === 'todo') {
+                ev.preventDefault()
+                this.addTodo()
+            }
+        }
     },
     computed: {
         isNoteTodo() {
@@ -181,19 +202,12 @@ export default {
             }
             else if (this.note.type !== 'img') return true
         },
-        todoBtn() {
-            if (this.note.todos) {
-                if (this.note.todos[0].todoId)
-                    return false
-            }
-            else if (this.note.type === "todo") return true
-            else return false
+        newTodoNote() {
+            return (!this.note.id) && (this.note.type === 'todo')
+            // (this.note.todos)
         }
     },
-    mounted() {
-        //    this.$refs.titleInput.focus()
-        // gets error
-    },
+    mounted() { },
     created() {
         this.loadNote()
     },
