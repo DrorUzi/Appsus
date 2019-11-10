@@ -39,12 +39,12 @@ export default {
     },
     computed: {
         checkIfRead() {
-            if (this.email.isRead) return '../../../../img/email/read.png'
-            else return '../../../../img/email/unread.png'
+            if (this.email.isRead) return '/img/email/read.png'
+            else return '/img/email/unread.png'
         },
         checkIfStared(){
-        if(this.email.isStared) return '../../../../img/email/star1.png'
-        else return '../../../../img/email/star3.png'
+        if(this.email.isStared) return '/img/email/star1.png'
+        else return '/img/email/star3.png'
         }
 
     },

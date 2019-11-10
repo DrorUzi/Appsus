@@ -13,11 +13,11 @@ export default {
                     <span><{{email.sentFrom}}></span>
                 
                 <div class="preview-icons">
-                    <img @click="onSaveNote(email)" title="Save as note" src="../../../img/email/note.png">
-                    <img @click="onDeleteEmail(email.id)" title="Delete" src="../../../img/email/delete.png">
-                    <img @click="onEditMail(email.id)"  title="Edit" src="../../../../img/email/edit.png">
+                    <img @click="onSaveNote(email)" title="Save as note" src="/img/email/note.png">
+                    <img @click="onDeleteEmail(email.id)" title="Delete" src="/img/email/delete.png">
+                    <img @click="onEditMail(email.id)"  title="Edit" src="/../img/email/edit.png">
                     <router-link title="See full email" :to="'/email/details/'+email.id">
-                    <img src="../../../../img/email/fulldetails.png">
+                    <img src="/../img/email/fulldetails.png">
                     </router-link>
                 </div>
                 </div>
