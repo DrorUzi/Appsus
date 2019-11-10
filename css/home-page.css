@@ -1,5 +1,6 @@
 .home-page {
-    height: 100vh;
+    height: 100%;
+    font-family: openSans;
 }
 
 .home-header {
@@ -15,8 +16,18 @@
 
 .home-img {
     width: 100%;
-    max-height: 600px;
+    height: 500px;
     object-fit: cover;
+}
+
+.home-header h2 {
+    position: absolute;
+    top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    font-size: 3rem;
 }
 
 .email-link {
@@ -25,13 +36,12 @@
     border-radius: 50%;
 }
 
-.homepage-info{
+.homepage-info {
     width: 33%;
     display: flex;
-
 }
 
-.icon-stack{
+.icon-stack {
     flex: 0 0 33.333333%;
     max-width: 33%;
 }
@@ -42,13 +52,40 @@
     line-height: 1.5 !important;
 }
 
-.fa-stack-2x {
-    color: rgb(216, 216, 216);
+.home-page-links {
+    display: flex;
+    padding: 30px;
+    justify-content: space-between;
 }
 
-.fac-6x{
-    vertical-align: middle;
+.home-page-links img {
+    width: 60%;
+    margin-top: 10px
 }
-.fa-stack-1x, .fa-stack-2x{
-    width: 40%!important;
+
+.add-link {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    align-items: center;
+    padding: 20px;
+}
+
+.add-link span {
+    font-size: 1.5rem
+}
+
+.add-link h3 {
+    font-size: 3rem;
+    border-bottom: 1px solid lightcoral
+}
+
+@media (max-width: 750px) {
+    .home-page-links {
+        flex-direction: column;
+        width: 100%;
+    }
+    .add-link {
+        width: 90%;
+    }
 }
