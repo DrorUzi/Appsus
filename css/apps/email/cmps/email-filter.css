@@ -74,7 +74,6 @@
 
 }
 
-
 .compose-btn {
     background-color: #f08080;
     border-radius: 20px;
@@ -104,4 +103,42 @@
 
 .compose-btn span {
     padding-top: 4px;
+}
+.email-select option{
+    background-color: rgb(250, 226, 226); 
+    border: 1px lightcoral solid;
+}
+
+@media (max-width: 750px) {
+     .main-filter-container{
+         width: 100%;
+         margin-left: 0;
+     }
+    .email-filter{
+        flex-direction: column-reverse;
+        height: 150px;
+        /* margin-top:20px; */
+    }
+    .compose-btn span{
+        display: none;
+    }
+    .compose-btn img{
+        width: 2.5rem;
+        height:2.53rem;
+        margin: 0;
+    }
+    .compose-btn{
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        padding-top: 6px;
+        padding-left: 7px;
+        position: fixed;
+        bottom: 35px;
+        left: 30px;
+    }
+    .email-filter select{
+        width: 70%;
+    }
+
 }

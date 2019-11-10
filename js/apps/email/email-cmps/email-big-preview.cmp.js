@@ -8,7 +8,7 @@ export default {
         <div class="small-info-container">
             <h2>{{email.subject}}</h2>
             <div class="email-name-line">
-                <div class="email-name">
+                <div class="email-name-details">
                     <h4>{{email.name}}</h4>
                     <span><{{email.sentFrom}}></span>
                 </div>

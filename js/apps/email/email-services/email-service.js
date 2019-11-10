@@ -14,7 +14,8 @@ export default {
     saveDraft,
     getInbox,
     getDeletedEmails,
-    getSentEmails
+    getSentEmails,
+    changeToStared
 }
 
 var gEmails;
@@ -72,7 +73,14 @@ function changeToRead(emailId) {
     var currEmail = gEmails.find(email => {
         return email.id === emailId
     })
-    currEmail.isRead = true
+    currEmail.isRead = !currEmail.isRead
+    utilsService.saveToStorage(EMAILS_KEY, gEmails)
+}
+function changeToStared(emailId){
+    var currEmail = gEmails.find(email => {
+        return email.id === emailId
+    })
+    currEmail.isStared = !currEmail.isStared
     utilsService.saveToStorage(EMAILS_KEY, gEmails)
 }
 

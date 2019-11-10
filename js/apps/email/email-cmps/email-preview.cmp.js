@@ -9,6 +9,7 @@ export default {
     template: `
         <section @click="isClick(email.id,email)" class="email-preview-container"> 
             <div class="preview-info" :class="{clicked : isClicked}">
+            <img class="star" @click.stop="changeStared(email.id,email)"  :src="checkIfStared">
                 <div class="name-preview">
                     <h3>{{email.name}}</h3>
                     <h4>{{email.subject}}</h4>
@@ -16,7 +17,6 @@ export default {
                 <div class="date-preview">
                     <h4>{{email.sentAt}}</h4>
                     <img title="Change reading status"class="read-envelope-img" :src="checkIfRead">
-                  
                 </div>
             </div>
            <email-big-preview :email="email" :class="{hidden : !isClicked}"></email-big-preview>
@@ -25,7 +25,7 @@ export default {
     data() {
         return {
             isClicked: false,
-           
+            isStared: false
         }
     },
     methods: {
@@ -33,6 +33,9 @@ export default {
             this.isClicked = !this.isClicked
             if(!email.isRead) eventBus.$emit('read', (emailId))
         },
+        changeStared(emailId,email){
+            eventBus.$emit('star', (emailId))
+        }
        
     },
     computed: {
@@ -40,6 +43,10 @@ export default {
             if (this.email.isRead) return '../../../../img/email/read.png'
             else return '../../../../img/email/unread.png'
         },
+        checkIfStared(){
+        if(this.email.isStared) return '../../../../img/email/star1.png'
+        else return '../../../../img/email/star3.png'
+        }
 
     },
     components: {

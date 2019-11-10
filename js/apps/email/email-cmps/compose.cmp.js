@@ -53,21 +53,31 @@ export default {
             this.$router.push('/email/draft')
         },
         noteToMail(note) {
+            console.log('hi',note, this);
             this.email.subject = note.title
             this.email.body = note.txt
+           
         }
     },
   
     created() {
         const emailId = this.$route.params.id;
         if (emailId) {
+            console.log('Handling Reply')
             emailService.findEmailById(emailId)
                 .then(email => {
-                    this.email = email
+                    var newEmail = JSON.parse(JSON.stringify(email))
+                    this.email = newEmail
                     this.email.subject = 'Re: ' + this.email.subject
+                    this.email.isSent = true 
                 })
         }
-        eventBus.$on('sendAsEmail', this.noteToMail)
+        // // eventBus.$on('sendAsEmail', this.noteToMail)
+        // eventBus.$on('sendAsEmail', (note)=>{
+        //     this.email.subject = 'Bambo' 
+        //     console.log('Got sendAsEMail event');
+            
+        // })
     }
 }
 

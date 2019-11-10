@@ -70,15 +70,6 @@ const myRoutes = [
             },
         ]
     },
-    // {
-    //     path: '/about',
-    //     component: aboutPage,
-    //     children: [
-    //         {
-    //             path: 'harta',
-    //             component: harta
-    //         }]
-    // },
 
 ]
 const myRouter = new VueRouter({ routes: myRoutes })

@@ -5,14 +5,24 @@
     background-color: rgba(255, 255, 255, 0.438);
     border:1px solid lightcoral;
     padding: 20px;
-    margin-left:30px ;
 }
 
 .email-details h2{
     border-bottom: 1px solid lightcoral;
     padding: 10px;
+    font-size:1.8rem;
 }
 .email-name{
     display: flex;
     flex-direction: row;
 }
+
+.email-name h4{
+    font-size: 1.5rem;
+    margin: 10px;
+}
+.email-name p{
+    font-size: 1.2rem;
+    margin-top: 13px;
+}
+

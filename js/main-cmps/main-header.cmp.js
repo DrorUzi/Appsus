@@ -6,7 +6,9 @@ export default {
     <div class="screen" @click="toggleMenu" :class="{'open-menu-screen':isMenuOpen}"></div>
         <img src="../../img/logo3.png">
         <nav class="main-nav-bar"> 
-            <button @click="toggleMenu" class="menu-btn">☰</button>
+            <div @click="toggleMenu" class="nav-icon">
+                <div></div>
+            </div>
             <div class="main-nav" :class="{'open-menu':isMenuOpen}">
                 <template v-if="currApp!=='homepage'">
                     <router-link class="nav-item" to="/" exact>Homepage</router-link> 

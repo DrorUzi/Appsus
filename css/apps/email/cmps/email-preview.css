@@ -34,6 +34,7 @@
     justify-content: flex-end;
     width: 40%;
     font-size: 1.3rem;
+    align-items: center;
 
 }
 .preview-info{
@@ -41,11 +42,11 @@
     width: 100%;
     justify-content: space-between;
     padding: 20px;
+    align-items: center;
 
 }
 .small-info-container{
     display: flex;
-    height: 12rem;
     padding: 20px;
     justify-content: space-between;
     flex-direction: column;
@@ -64,10 +65,13 @@
     width: 1.5rem;
     height: 1.5rem;
 }
-.email-name{
+.email-name-details{
     display: flex;
     padding: 15px;
     justify-content: space-between;
+}
+.email-name-details h4,span{
+    font-size:1.2rem
 }
 .small-info-container{
     cursor: default;
@@ -78,4 +82,18 @@
 
 .clicked{
     background-color: rgb(240, 236, 236);    
+}
+.star{
+    height: 1.5rem;
+    margin-right:20px;
+} 
+
+@media (max-width: 750px) {
+ .email-preview-container{
+     max-width: 80vh;
+ }
+}
+
+.small-info-container p{
+    font-size:1.2rem;
 }

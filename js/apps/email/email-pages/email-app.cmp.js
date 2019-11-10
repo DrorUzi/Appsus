@@ -11,10 +11,10 @@ export default {
   template: `
     <section class="email-background">
       <nav-bar :currApp="'missEmail'"></nav-bar>
-      <div class="email-app container">
+      <div class="email-app">
           <email-filter @sort="setSort" @filtered="setFilter"></email-filter>
           <div class="main-info">
-            <side-bar :unRead="unRead"></side-bar>
+            <side-bar  :unRead="unRead"></side-bar>
               <router-view></router-view>
           </div>
       </div>
@@ -101,6 +101,12 @@ export default {
           eventBus.$emit('deletedMails', this.emails)
         })
     })
+    eventBus.$on('star', (emailId) => {
+      emailService.changeToStared(emailId)
+      emailService.getStaredEmails()
+        .then(res => { this.stared = res })
+    })
+
 
   },
   mounted() {

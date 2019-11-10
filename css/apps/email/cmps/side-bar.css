@@ -4,10 +4,8 @@
     flex-direction: column;
     justify-content: space-between;
     height: 40%;
-    font-size:1.3rem
+    font-size: 1.3rem
 }
-
-
 
 .side-bar-options {
     display: flex;
@@ -27,7 +25,6 @@
     align-items: center;
     width: 70%;
 }
-
 
 .opt:hover {
     background-color: rgb(216, 214, 214);
@@ -50,21 +47,93 @@
 .side-bar a:active {
     background-color: rgba(255, 0, 0, 0.315);
 }
+
 /* .active{
     background-color: rgba(255, 0, 0, 0.315);
     border-radius: 0 30px 30px 0;
 } */
 
-
-/* .router-link-active {
+.side-bar-options .router-link-active {
     background-color: rgba(255, 0, 0, 0.315);
     border-radius: 0 30px 30px 0;
-} */
-/* .router-link-active:hover {
+}
+
+.side-bar-options .router-link-active:hover {
     background-color: rgba(255, 0, 0, 0.315);
     border-radius: 0 30px 30px 0;
-} */
+}
 
-.delete{
-   padding: 4px;
+.delete {
+    padding: 4px;
+}
+
+.nav-icon-side-bar img {
+    display: none;
+}
+
+@media (max-width: 750px) {
+    .email-screen {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity .3s;
+        z-index: 99;
+    }
+    .email-open-menu-screen {
+        visibility: visible;
+        opacity: 1;
+    }
+    .side-bar {
+        justify-content: flex-start;
+    }
+    .nav-icon-side-bar {
+        margin: 1em;
+        width: 40px;
+        cursor: pointer;
+        position: fixed;
+        top: 220px;
+        left: 15px;
+    }
+    .nav-icon-side-bar img {
+        width: 2rem;
+        display: block;
+    }
+    .side-bar-options {
+        left: 0;
+        top: -20px;
+        padding: 25px;
+        position: fixed;
+        transform: translate(-100%);
+        transition: transform .6s;
+        background-color: rgb(253, 235, 235);
+        height: 100vh;
+    }
+    .email-open-menu {
+        transform: translate(0, 0);
+        z-index: 999;
+    }
+    /* .nav-icon-side-bar:after, .nav-icon-side-bar:before, .nav-icon-side-bar div {
+        background-color: rgb(255, 255, 255);
+        box-shadow: 2px 2px 5px black;
+        border-radius: 3px;
+        content: '';
+        display: block;
+        height: 5px;
+        margin: 7px 0;
+        transition: all .2s ease-in-out;
+    } */
+    .opt {
+        padding: 10px;
+        border-bottom: 1px solid lightcoral;
+        width: 100%;
+    }
+    .opt:nth-child(5) {
+        border: none;
+    }
 }

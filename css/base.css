@@ -4,6 +4,7 @@
 
 body{
     background-color: #f4e8e8;
+    margin: 0;
 
 }
 .keep-app{
@@ -30,3 +31,4 @@ a{
    margin: 0 auto;
    max-width: 1360px;
 }
+
