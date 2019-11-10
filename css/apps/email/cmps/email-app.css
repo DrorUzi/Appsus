@@ -1,6 +1,5 @@
 
 .email-app{
-    background-image: url('../../../../img/email/bcg4.jpg');
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -8,6 +7,10 @@
     flex-direction: column;
     font-family: openSans;
 
+}
+.email-background{
+    background-image: url('../../../../img/email/bcg4.jpg');
+    min-height: 100vh;
 }
 
 .main-info{

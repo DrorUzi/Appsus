@@ -57,8 +57,7 @@ export default {
             this.email.body = note.txt
         }
     },
-    mounted() {
-    },
+  
     created() {
         const emailId = this.$route.params.id;
         if (emailId) {

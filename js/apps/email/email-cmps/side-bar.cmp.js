@@ -30,10 +30,11 @@ export default {
             </div>
     </section>
     `,
+
     methods:{
         openFilter(){
             eventBus.$emit('openFilter')
         }
-    }
+    },
 }
 

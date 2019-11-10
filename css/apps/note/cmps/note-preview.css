@@ -1,7 +1,7 @@
 .note-preview {
     border: 2px solid rgba(0, 0, 0, 0.233);
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -36,7 +36,7 @@
 
 .edit-link {
     background-color: transparent !important;
-    border-radius: 0 30px 30px 0;
+    border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.5);
     width: 50%;
 }

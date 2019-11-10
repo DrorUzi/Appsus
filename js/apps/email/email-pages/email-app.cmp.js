@@ -9,7 +9,7 @@ import navBar from '../../../main-cmps/main-header.cmp.js';
 
 export default {
   template: `
-    <section class="email-backgroung">
+    <section class="email-background">
       <nav-bar :currApp="'missEmail'"></nav-bar>
       <div class="email-app container">
           <email-filter @sort="setSort" @filtered="setFilter"></email-filter>
