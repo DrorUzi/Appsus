@@ -8,7 +8,7 @@ export default {
     <section class="home-page">
     <nav-bar :currApp="'homepage'"></nav-bar>
         <div class="home-header">
-            <img class="home-img" src="./img/bcg2.jpg" alt="">
+            <img class="home-img" src="/img/bcg2.jpg" alt="">
            <h2>Keep On Track With Us</h2>
             <div class="home-page-links">
                 <router-link class="add-link" to="/book"><h3>BOOKS</h3><img src="../../img/library.png"  alt=""><span>Expand your horizons and get into an amazing world of adventures with your favorite books!</span></router-link>
