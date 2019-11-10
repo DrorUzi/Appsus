@@ -33,10 +33,9 @@ export default {
             this.isClicked = !this.isClicked
             if(!email.isRead) eventBus.$emit('read', (emailId))
         },
-        changeStared(emailId,email){
+        changeStared(emailId){
             eventBus.$emit('star', (emailId))
         }
-       
     },
     computed: {
         checkIfRead() {
@@ -51,6 +50,7 @@ export default {
     },
     components: {
         emailBigPreview
-    }
+    },
+  
 
 }

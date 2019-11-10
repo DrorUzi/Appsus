@@ -6,8 +6,8 @@ export default {
     getEmails,
     findEmailById,
     deleteEmail,
-    getUnreadMails,
-    changeToRead,
+    getUnreadEmailsNum,
+    changeRead,
     sendMail,
     getStaredEmails,
     getDraftEmails,
@@ -54,7 +54,8 @@ function findEmailById(id) {
     return Promise.resolve(email)
 }
 
-function getUnreadMails() {
+
+function getUnreadEmailsNum() {
     var res = 0
     gEmails.forEach(email => {
         if (!email.isRead) res++
@@ -69,7 +70,7 @@ function sendMail(newEmail) {
 
 }
 
-function changeToRead(emailId) {
+function changeRead(emailId) {
     var currEmail = gEmails.find(email => {
         return email.id === emailId
     })

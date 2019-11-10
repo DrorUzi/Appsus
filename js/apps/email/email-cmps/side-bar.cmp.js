@@ -5,10 +5,12 @@ export default {
     props: ['unRead'],
     template: `
     <section class="side-bar"> 
-    <div class="email-screen" @click="toggleMenu" :class="{'email-open-menu-screen':isMenuOpen}">
-    </div>
-    <div @click="toggleMenu" class="nav-icon-side-bar"><img src="../../../img/email/menu.png">
-            </div>
+        <div class="email-screen" @click="toggleMenu" :class="{'email-open-menu-screen':isMenuOpen}">
+        </div>
+        <div class="folders">
+            <div @click="toggleMenu" class="nav-icon-side-bar"><img src="../../../img/email/menu.png"></div>
+            <span><img class="arrow" src="../../../img/email/left.png">FOLDERS</span>
+        </div>
         <div @click="toggleMenu(); openFilter()" class="side-bar-options" :class="{'email-open-menu':isMenuOpen}">
             <router-link class="opt" to="/email/list" exact>
                 <img src="../../../img/email/inbox.png">

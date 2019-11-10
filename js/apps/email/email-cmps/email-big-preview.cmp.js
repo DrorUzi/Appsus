@@ -11,7 +11,7 @@ export default {
                 <div class="email-name-details">
                     <h4>{{email.name}}</h4>
                     <span><{{email.sentFrom}}></span>
-                </div>
+                
                 <div class="preview-icons">
                     <img @click="onSaveNote(email)" title="Save as note" src="../../../img/email/note.png">
                     <img @click="onDeleteEmail(email.id)" title="Delete" src="../../../img/email/delete.png">
@@ -19,6 +19,7 @@ export default {
                     <router-link title="See full email" :to="'/email/details/'+email.id">
                     <img src="../../../../img/email/fulldetails.png">
                     </router-link>
+                </div>
                 </div>
             </div>
             <p>{{body}}</p>

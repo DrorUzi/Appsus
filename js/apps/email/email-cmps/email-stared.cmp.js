@@ -26,6 +26,9 @@ export default {
          eventBus.$on('sortedEmails',(emails)=> {
             this.emails = emails
          })
+         eventBus.$on('changeStar',(stared) =>{
+            this.emails = stared
+         })
       
 
     }

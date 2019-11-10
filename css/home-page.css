@@ -43,9 +43,12 @@
 }
 
 .fa-stack-2x {
-    color: gray;
+    color: rgb(216, 216, 216);
 }
 
 .fac-6x{
     vertical-align: middle;
+}
+.fa-stack-1x, .fa-stack-2x{
+    width: 40%!important;
 }
