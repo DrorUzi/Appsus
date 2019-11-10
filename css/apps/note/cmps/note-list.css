@@ -12,6 +12,7 @@
     margin: 0 auto;
     border-radius: 20px;
     border: 1px solid black;
+    margin-bottom: 20px;
 }
 @media (max-width: 950px) {
     .note-list {
