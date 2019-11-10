@@ -59,9 +59,6 @@ export default {
         }
     },
     methods: {
-        //need to find a way to introduce the new notes to vue (observer)
-        //todo preview works properly only after refresh
-        //puttin on hold for the meanwhile,too much times wasted
         addTodo() {
             if(!this.note.data)return Swal.fire('Please write something')
             if (this.note.id) {

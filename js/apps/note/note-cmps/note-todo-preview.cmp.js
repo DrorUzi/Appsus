@@ -39,13 +39,8 @@ export default {
         }
 
     },
-    computed: {
-
-
-    },
-    created() {
-
-    },
+    computed: {},
+    created() {},
     components: {
         previewTopPanel,
         previewBottomPanel,
