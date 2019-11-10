@@ -59,7 +59,6 @@ export default {
            
         }
     },
-  
     created() {
         const emailId = this.$route.params.id;
         if (emailId) {
@@ -69,15 +68,17 @@ export default {
                     var newEmail = JSON.parse(JSON.stringify(email))
                     this.email = newEmail
                     this.email.subject = 'Re: ' + this.email.subject
-                    this.email.isSent = true 
+                    this.email.isSent = true;
+                    this.email.isRead = false;
+                    eventBus.$emit('read', (this.email.id))
                 })
         }
-        // // eventBus.$on('sendAsEmail', this.noteToMail)
-        // eventBus.$on('sendAsEmail', (note)=>{
-        //     this.email.subject = 'Bambo' 
-        //     console.log('Got sendAsEMail event');
+        // eventBus.$on('sendAsEmail', this.noteToMail)
+        eventBus.$on('sendAsEmail', (note)=>{
+            this.email.subject = 'Bambo' 
+            console.log('Got sendAsEMail event');
             
-        // })
+        })
     }
 }
 

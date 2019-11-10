@@ -248,3 +248,5 @@ var starterEmails = [
     },
 
 ]
+
+window.gEmails = gEmails
