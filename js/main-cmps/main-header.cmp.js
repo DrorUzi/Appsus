@@ -13,7 +13,7 @@ export default {
                 <template v-if="currApp!=='homepage'">
                     <router-link class="nav-item" to="/" exact>Homepage</router-link> 
                     <router-link class="nav-item" v-if="currApp!=='missEmail'" to="/email" exact>Email</router-link>
-                    <router-link class="nav-item" v-if="currApp!=='missBooks'" to="/books" exact>Books</router-link> 
+                    <router-link class="disable nav-item" v-if="currApp!=='missBooks'" to="/books" exact>Books</router-link> 
                     <router-link class="nav-item" v-if="currApp!=='missKeep'" to="/note" exact>Keep</router-link> 
                 </template>
                 <template v-else>

@@ -100,3 +100,8 @@
     font-size: 1.5rem;
     font-family:openSans ;
 }
+
+
+.disable{
+    pointer-events: none;
+}
